@@ -1,0 +1,39 @@
+/*import { ChartData } from "../../../../../shared-components/Charts";
+
+// TODO: Lock action types with payload types
+export type StatCharterActionType =
+  'SET_INTERVAL' |
+  'SET_CATEGORY' |
+  'SET_STAT' |
+  'SET_CHART_DATA';
+export type StatCharterAction = {
+  type: StatCharterActionType;
+  payload: string | ChartData;
+};
+export type Dispatch = (action: StatCharterAction) => void;
+export type StatCategory = 'per_game' | 'total'
+export type StatTimeframe = 'regular' | 'playoffs';
+export type StatInterval = 'season' | 'age';
+export type StatType = 'pts' | 'ast' | 'reb';
+
+export interface StatCharterState {
+  playerKeys: string[];
+  interval: StatInterval;
+  category: StatCategory;
+  statType: StatType;
+  timeframe: StatTimeframe;
+  chartData: ChartData | null;
+}
+
+export interface RawChartDatapoint {
+  interval: string;
+  player_key: string;
+  player_name: string;
+  stat: number;
+}
+
+export interface ParsedChartDataPoint {
+  interval: string;
+  player_name: string;
+  stat: number;
+}*/
