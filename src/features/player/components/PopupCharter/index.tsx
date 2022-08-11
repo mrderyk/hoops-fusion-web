@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { ChartIcon } from '../../../../icons/ChartIcon';
-import { StatCharter } from '../../../../shared-components/StatCharter';
+import { StatCharter } from '../../../../widgets/StatCharter';
 import { IconWrapper, HelperText, ExpandButtonWrapper,  ModalHeader, ModalInnerWrapper, TitleWrapper, CloseButton } from './styled';
 
 export const PopupCharter: React.FC<{}> = () => {

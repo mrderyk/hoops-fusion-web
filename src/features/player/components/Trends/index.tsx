@@ -2,8 +2,8 @@ import {useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { SectionHeader, SectionSubheader } from '../../styled';
 import { GET_PLAYER_STATS } from '../../../../../lib/queries';
-import { Wrapper } from "./styled";
-import { ChartData, Charts } from '../../../../shared-components/Charts';
+import { Charts } from '../../../../shared-components/Charts';
+import { ChartData } from '../../../../widgets/Chart';
 import { SectionInnerWrapper, SectionWrapper } from '../../../../shared-components/SectionWrapper';
 
 

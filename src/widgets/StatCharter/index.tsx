@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { StatCharterContext, StatCharterContextProvider } from './context';
 import { PlayerData, StatCategory, StatCharterActionType, StatInterval } from './context/types';
-import { Chart } from '../Charts';
+import { Chart } from '../Chart';
 import {
   AddedPlayer,
   AddedPlayerImage,

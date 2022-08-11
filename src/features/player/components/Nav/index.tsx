@@ -1,20 +1,17 @@
-import { Search } from "../../../../shared-components/Search";
+import { Search } from "../../../../widgets/Search";
 import { NavLink, SearchWrapper, Wrapper } from "./styled";
 
 export const Nav = () => {
   return (
     <Wrapper>
       <NavLink>
-        <a href="#stats">STATS</a>
+        <a href="#stats">CAREER STATS</a>
       </NavLink>
       <NavLink>
         <a href="#trends">CAREER TRENDS</a>
       </NavLink>
       <NavLink>
-        <a href="#sneakers">SNEAKERS</a>
-      </NavLink>
-      <NavLink>
-        <a href="#highlights">HIGHLIGHTS</a>
+        <a href="#social">SOCIAL</a>
       </NavLink>
       <SearchWrapper>
         <Search size={'12px'} />

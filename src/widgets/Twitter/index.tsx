@@ -6,6 +6,7 @@ interface TwitterProps {
 
 export const Twitter: React.FC<TwitterProps> = ({ username }) => {
   return (
+    
     <TwitterTimelineEmbed
       options={{
         height: 540

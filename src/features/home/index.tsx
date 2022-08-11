@@ -1,5 +1,5 @@
 import { InnerWrapper, SearchWrapper, Wrapper } from './styled';
-import { Search } from '../../shared-components/Search';
+import { Search } from '../../widgets/Search';
 import { BoxLogo } from './components/BoxLogo';
 
 export const Home = () => {
