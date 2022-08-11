@@ -11,6 +11,7 @@ export const SectionHeader = styled.div`
 `;
 
 export const SectionSubheader = styled.div`
+  border-bottom: 1px solid ${colors.darkGray};
   box-sizing: border-box;
   font-size: 1.5rem;
   font-weight: 600;

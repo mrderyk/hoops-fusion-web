@@ -23,10 +23,10 @@ export const Highlights: React.FC<HighlightsProps> = ({ playerKey }) => {
   });
 
   return (
-    <SectionWrapper>
+    <>
       <a id="highlights"/>
-      <SectionHeader>HIGHLIGHTS</SectionHeader>
       <SectionInnerWrapper>
+        <SectionSubheader>Highlights</SectionSubheader>
         <HighlightsWrapper>
         {
           youtubeVideoIds && youtubeVideoIds.map((id: string) => (
@@ -35,7 +35,7 @@ export const Highlights: React.FC<HighlightsProps> = ({ playerKey }) => {
         }
         </HighlightsWrapper>
       </SectionInnerWrapper>
-    </SectionWrapper>
+    </>
   );
 };
 

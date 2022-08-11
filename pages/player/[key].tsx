@@ -6,17 +6,34 @@ import { Nav } from '../../src/features/player/components/Nav';
 import { Stats } from '../../src/features/player/components/Stats';
 import { Trends } from '../../src/features/player/components/Trends';
 import { PageWrapper } from '../../src/shared-components/PageWrapper';
+import { Twitter } from '../../src/widgets/Socials/Twitter';
+import { PrimaryContent, SecondaryContent, Wrapper } from './components/styled';
+import { Socials } from '../../src/widgets/Socials';
 
-export default function Player({ initialData }: {initialData: HeaderProps}) {
+interface PlayerPageProps extends HeaderProps {
+  twitter: string;
+  instagram: string;
+}
+
+export default function Player({ initialData }: {initialData: PlayerPageProps}) {
   return (
     <PageWrapper>
       <Header
         {...initialData}
       />
       <Nav />
-      <Stats playerKey={initialData.key} />
-      <Trends playerKey={initialData.key} />
-      <Highlights playerKey={initialData.key} />
+      <Wrapper>
+        <PrimaryContent>
+          <Stats playerKey={initialData.key} />
+          <Trends playerKey={initialData.key} />
+        </PrimaryContent>
+        <SecondaryContent>
+          {
+            (!!initialData.twitter || !!initialData.instagram ) &&
+              <Socials playerKey={initialData.key} twitter={initialData.twitter} instagram={initialData.instagram} />
+          }
+        </SecondaryContent>
+      </Wrapper>
       <PopupCharter />
     </PageWrapper>
   );

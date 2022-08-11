@@ -7,7 +7,7 @@ export const SectionWrapper = styled.div`
   box-shadow: 0 0 3px 1px rgb(0 0 0 / 50%);
 
   flex: 1;
-  margin: .5rem;
+  margin: .5rem 0;
   margin-bottom: .75rem;
   overflow: hidden;
   text-align: left;
