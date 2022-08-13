@@ -1,20 +1,24 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  height: 5rem;
-  max-width: 600px;
+  height: 100%;
   overflow: hidden;
-  position: relative;
+  left: 0;
+  position: absolute;
   text-align: center;
+  top: 0;
   white-space: nowrap;
+  width: 100%;
 `;
 
 export const BoxLogoTitleWrapper = styled.div`
   align-items: center;
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, .8);
   display: flex;
+  font-size: 2rem;
+  font-weight: 400;
   height: 100%;
-  justify-content: center;
+  padding: 10px 1rem;
   position: absolute;
   width: 100%;
 `;

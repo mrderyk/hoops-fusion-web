@@ -19,5 +19,6 @@ export const ContentWrapper = styled.div`
   display: flex;
   height: 100%;
   padding: 10px 1rem;
+  position: relative;
   width: 100%;
 `;

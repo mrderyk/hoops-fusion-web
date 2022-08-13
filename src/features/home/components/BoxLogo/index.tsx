@@ -16,6 +16,16 @@ export const BoxLogo: React.FC<{}> = () => {
         <BoxLogoBgTile src={MJ_SHRUG_GIF_URL} />
         <BoxLogoBgTile src ={LEBRON_BACKBREAK_GIF_URL} />
         <BoxLogoBgTile src ={KOBE_HELLO_GIF_URL} />
+        <BoxLogoBgTile src ={LARRY_TOWEL_GIF_URL} />
+        <BoxLogoBgTile src ={STEPH_RING_GIF_URL} />
+        <BoxLogoBgTile src={MJ_SHRUG_GIF_URL} />
+        <BoxLogoBgTile src ={LEBRON_BACKBREAK_GIF_URL} />
+        <BoxLogoBgTile src ={KOBE_HELLO_GIF_URL} />
+        <BoxLogoBgTile src ={LARRY_TOWEL_GIF_URL} />
+        <BoxLogoBgTile src ={STEPH_RING_GIF_URL} />
+        <BoxLogoBgTile src={MJ_SHRUG_GIF_URL} />
+        <BoxLogoBgTile src ={LEBRON_BACKBREAK_GIF_URL} />
+        <BoxLogoBgTile src ={KOBE_HELLO_GIF_URL} />
       </BoxLogoBgTilesWrapper>
       <BoxLogoTitleWrapper>
         <Title>{'HOOPS FUSION'}</Title>
