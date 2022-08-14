@@ -7,7 +7,7 @@ import { Wrapper } from "./styled";
 interface LeaderboardProps {
   title: string;
   stat: string;
-  period: 'regular' | 'interval';
+  period: 'regular' | 'playoffs';
 }
 
 interface Leader {
