@@ -9,18 +9,26 @@ export const TableTitle = styled.div`
   text-transform: uppercase;
 `;
 
-export const Table = styled.table`
+const sharedTableStyles = () => `
   border-left: 1px solid ${colors.darkGray};
   border-right: 1px solid ${colors.darkGray};
-  table-layout: fixed;
   width: 100%;
-  min-width: 1000px;
 `;
 
-export const HeaderRow = styled.tr`
-`
+export const StyledTable = styled.table`
+  ${sharedTableStyles()}
+`;
 
-export const TableHeader = styled.th`
+
+export const StyledStatsTable = styled.table`
+  ${sharedTableStyles()}
+  min-width: 1000px;
+  table-layout: fixed;
+
+`;
+
+
+const sharedTableHeaderStyles = () => `
   background-color: ${colors.blue};
   border-top: 1px solid ${colors.darkGray};
   border-bottom: 1px solid ${colors.darkGray};
@@ -29,12 +37,20 @@ export const TableHeader = styled.th`
   cursor: pointer;
   font-size: .7rem;
   font-weight: 600;
-  padding: 0.25rem 0;
+  padding: 0.25rem;
   text-align: center;
 
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const TableHeader = styled.th`
+  ${sharedTableHeaderStyles()}
+`;
+
+export const StatsTableHeader = styled.th`
+  ${sharedTableHeaderStyles()}
 
   &:first-of-type {
     width: 80px;

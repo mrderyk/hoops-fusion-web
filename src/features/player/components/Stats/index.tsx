@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { SectionHeader, SectionSubheader } from '../../styled';
 import { GET_PLAYER_STATS } from '../../../../../lib/queries';
 import { SectionInnerWrapper, SectionWrapper } from '../../../../shared-components/SectionWrapper';
-import { PerGameStats, StatsTable } from '../../../../widgets/StatsTable';
+import { GameStats, StatsTable } from '../../../../widgets/Tables';
 
 interface StatsProps {
   playerKey: string;
@@ -27,14 +27,14 @@ export const Stats: React.FC<StatsProps> = ({ playerKey }) => {
 }
 
 const StatsPerGameRegular: React.FC<StatsProps> = ({ playerKey }) => {
-  const [perGameStatsRegular, setPerGameStatsRegular] = useState<PerGameStats[] | null>(null);
+  const [perGameStatsRegular, setGameStatsRegular] = useState<GameStats[] | null>(null);
   const { loading } = useQuery(GET_PLAYER_STATS, {
     fetchPolicy: 'network-only',
     variables: {
       key: playerKey,
     },
     onCompleted: (data: any) => {
-      setPerGameStatsRegular(data.getPlayerStatsPerGame);
+      setGameStatsRegular(data.getPlayerStatsPerGame);
     }
   });
 
@@ -49,7 +49,7 @@ const StatsPerGameRegular: React.FC<StatsProps> = ({ playerKey }) => {
 };
 
 const StatsPerGamePlayoffs: React.FC<StatsProps> = ({ playerKey }) => {
-  const [stats, setStats] = useState<PerGameStats[] | null>(null);
+  const [stats, setStats] = useState<GameStats[] | null>(null);
   const { loading } = useQuery(GET_PLAYER_STATS, {
     fetchPolicy: 'network-only',
     variables: {
@@ -71,7 +71,7 @@ const StatsPerGamePlayoffs: React.FC<StatsProps> = ({ playerKey }) => {
 };
 
 const StatsTotalsRegular: React.FC<StatsProps> = ({ playerKey }) => {
-  const [stats, setStats] = useState<PerGameStats[] | null>(null);
+  const [stats, setStats] = useState<GameStats[] | null>(null);
   const { loading } = useQuery(GET_PLAYER_STATS, {
     fetchPolicy: 'network-only',
     variables: {
@@ -93,7 +93,7 @@ const StatsTotalsRegular: React.FC<StatsProps> = ({ playerKey }) => {
 };
 
 const StatsTotalsPlayoffs: React.FC<StatsProps> = ({ playerKey }) => {
-  const [stats, setStats] = useState<PerGameStats[] | null>(null);
+  const [stats, setStats] = useState<GameStats[] | null>(null);
   const { loading } = useQuery(GET_PLAYER_STATS, {
     fetchPolicy: 'network-only',
     variables: {

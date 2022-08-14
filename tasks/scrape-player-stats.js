@@ -27,7 +27,7 @@ const parseSeason = (seasonString) => {
     return `${seasonParts[0]}-${seasonYearPrefix}${seasonParts[1]}`;
 };
 
-const buildPerGameStats = (tableValues) => {
+const buildGameStats = (tableValues) => {
   return tableValues.map(values => {
     return {
       season: parseSeason(values['Season']),
@@ -201,9 +201,9 @@ getValuesFromTable = (table, $) => {
   return tableValues
 };
 
-const getPerGameStatsFromTable = (table, $) => {
+const getGameStatsFromTable = (table, $) => {
   const tableValues = getValuesFromTable(table, $);
-  return buildPerGameStats(tableValues);
+  return buildGameStats(tableValues);
 }
 
 const getPer36MinsStatsFromTable = (table, $) => {
@@ -237,8 +237,8 @@ const getPer100PossStatsFromTable = (table, $) => {
         const response = await axios.get(url);
         const $ = cheerio.load(response.data.replaceAll('<!--', '').replaceAll('-->', ''));
         const stats = {
-          perGame: getPerGameStatsFromTable($(SELECTORS.STATS_TABLE_PER_GAME), $),
-          playoffsPerGame: getPerGameStatsFromTable($(SELECTORS.STATS_TABLE_PLAYOFFS_PER_GAME), $),
+          perGame: getGameStatsFromTable($(SELECTORS.STATS_TABLE_PER_GAME), $),
+          playoffsPerGame: getGameStatsFromTable($(SELECTORS.STATS_TABLE_PLAYOFFS_PER_GAME), $),
           //per36: getPer36MinsStatsFromTable($(SELECTORS.STATS_TABLE_PER_36), $),
           //playoffsPer36: getPer36MinsStatsFromTable($(SELECTORS.STATS_TABLE_PLAYOFFS_PER_36), $),
           //per100Poss: getPer100PossStatsFromTable($(SELECTORS.STATS_TABLE_PER_POSS), $),
@@ -250,7 +250,7 @@ const getPer100PossStatsFromTable = (table, $) => {
         // update stats - regular season
         // per game
         stats.perGame.forEach(async (s) => {
-          query = createPerGameStatsUpsertQuery(playerKey, 'player_stats_per_game_regular', s);
+          query = createGameStatsUpsertQuery(playerKey, 'player_stats_per_game_regular', s);
           try {
             await pool.query(query);
           } catch (e) {
@@ -272,7 +272,7 @@ const getPer100PossStatsFromTable = (table, $) => {
         // update per game stats - playoffs
         // per game
         stats.playoffsPerGame.forEach(async (s) => {
-          query = createPerGameStatsUpsertQuery(playerKey, 'player_stats_per_game_playoffs', s);
+          query = createGameStatsUpsertQuery(playerKey, 'player_stats_per_game_playoffs', s);
           try {
             await pool.query(query);
           } catch (e) {
@@ -298,7 +298,7 @@ const getPer100PossStatsFromTable = (table, $) => {
   });
 })();
 
-const createPerGameStatsUpsertQuery = (playerKey, tableName, s) => {
+const createGameStatsUpsertQuery = (playerKey, tableName, s) => {
   return `
     INSERT INTO ${tableName} (
       player_key,
