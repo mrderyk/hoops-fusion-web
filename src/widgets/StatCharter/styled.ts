@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   display: flex;
   height: 100%;
+  width: 100%;
 `;
 
 export const ControlsWrapper = styled.div`

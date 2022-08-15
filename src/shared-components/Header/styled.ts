@@ -22,3 +22,10 @@ export const ContentWrapper = styled.div`
   position: relative;
   width: 100%;
 `;
+
+export const Title = styled.div`
+  box-sizing: border-box;
+  font-size: 3.5rem;
+  font-weight: 600;
+  padding-right: 1rem;
+`
