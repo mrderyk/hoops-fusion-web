@@ -4,7 +4,7 @@ import { Header } from '../../src/shared-components/Header';
 import { Link as NavLinkProps, Nav } from '../../src/shared-components/Nav';
 import { PageWrapper } from '../../src/shared-components/PageWrapper';
 import { Search } from '../../src/widgets/Search';
-import { SectionWrapper } from '../../src/shared-components/SectionWrapper';
+import { SectionWrapper } from '../../src/shared-components/page';
 import { Directory } from './components/Directory';
 import { Letter, MainTitle, SearchInnerWrapper, SearchWrapper } from './components/styled';
 

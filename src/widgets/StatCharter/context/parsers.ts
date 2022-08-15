@@ -1,4 +1,4 @@
-import { ChartData } from '../../Charts';
+import { ChartData } from '../../Chart';
 import { RawChartDatapoint, StatCategory, StatInterval, StatPeriod, StatType } from './types';
 
 type AlignedDataPoint = {

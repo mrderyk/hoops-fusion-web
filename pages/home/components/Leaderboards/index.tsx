@@ -1,7 +1,11 @@
-import { SectionHeader, SectionSubheader } from "../../../../src/features/player/styled";
-import { SectionInnerWrapper, SectionWrapper } from "../../../../src/shared-components/SectionWrapper";
-import { Leaderboard } from "../../../../src/widgets/Leaderboard";
-import { LeaderboardsWrapper, LeaderboardWrapper, Wrapper } from "./styled";
+import { 
+  SectionHeader,
+  SectionSubheader,
+  SectionInnerWrapper,
+  SectionWrapper
+} from '../../../../src/shared-components/page';
+import { Leaderboard } from '../../../../src/widgets/Leaderboard';
+import { LeaderboardsWrapper, LeaderboardWrapper, Wrapper } from './styled';
 
 export const Leaderboards = () => {
   return (

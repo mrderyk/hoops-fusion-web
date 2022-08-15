@@ -1,8 +1,12 @@
-import { Highlights } from "../Highlights";
-import { SectionHeader, SectionSubheader } from "../../styled"
-import { SectionInnerWrapper, SectionWrapper } from "../../../../shared-components/SectionWrapper"
-import { HighlightsWrapper, TwitterWrapper, Wrapper } from "./styled";
-import { Twitter } from "../../../../widgets/Twitter";
+import { Highlights } from '../Highlights';
+import {
+  SectionHeader,
+  SectionSubheader,
+  SectionInnerWrapper,
+  SectionWrapper
+} from '../../../../shared-components/page';
+import { HighlightsWrapper, TwitterWrapper, Wrapper } from './styled';
+import { Twitter } from '../../../../widgets/Twitter';
 
 interface SocialsProps {
   playerKey: string;
@@ -13,7 +17,7 @@ interface SocialsProps {
 export const Socials: React.FC<SocialsProps> = ({ playerKey, twitter, instagram }) => {
   return (
     <SectionWrapper>
-      <a id="social"/>
+      <a id='social'/>
       <SectionHeader>{'SOCIAL'}</SectionHeader>
       <Wrapper>
       {

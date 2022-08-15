@@ -1,5 +1,5 @@
-import { SectionSubheader } from '../../styled';
-import { SectionInnerWrapper } from '../../../../shared-components/SectionWrapper';
+import { SectionSubheader } from '../../../../shared-components/page';
+import { SectionInnerWrapper } from '../../../../shared-components/page';
 import { Highlights as HighlightsWidget } from '../../../../widgets/Highlights';
 
 interface HighlightsProps {

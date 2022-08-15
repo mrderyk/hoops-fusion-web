@@ -1,5 +1,4 @@
 import { gql, useLazyQuery } from '@apollo/client';
-import { stat } from 'fs';
 import { Context, createContext, useReducer, useCallback } from 'react';
 import { ChartData } from '../../Chart';
 import {
