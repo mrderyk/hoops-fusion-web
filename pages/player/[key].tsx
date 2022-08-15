@@ -1,4 +1,4 @@
-import { getAllPlayerKeys, getInitialPlayerData } from '../../lib/players';
+import { getAllPlayerKeys, getInitialPlayerData } from './queries';
 import { PopupCharter } from '../../src/features/player/components/PopupCharter';
 import { Header, HeaderProps } from '../../src/features/player/components/Header';
 import { Nav } from '../../src/features/player/components/Nav';

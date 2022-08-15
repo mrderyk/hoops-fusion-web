@@ -1,5 +1,5 @@
-import { gql } from "@apollo/client";
-import { apolloClient } from "./apollo-client";
+import { gql } from '@apollo/client';
+import { apolloClient } from '../../lib/apollo-client';
 
 export const getAllPlayerKeys = async () => {
   const { data } = await apolloClient.query({

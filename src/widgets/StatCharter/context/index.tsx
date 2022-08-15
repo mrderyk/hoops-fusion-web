@@ -1,8 +1,7 @@
-import { useLazyQuery } from '@apollo/client';
+import { gql, useLazyQuery } from '@apollo/client';
 import { stat } from 'fs';
 import { Context, createContext, useReducer, useCallback } from 'react';
-import { GET_CHART_DATA } from '../../../../lib/queries';
-import { ChartData } from '../../Charts';
+import { ChartData } from '../../Chart';
 import {
   setStatCategory,
   setStatType,
@@ -136,3 +135,14 @@ export const StatCharterContextProvider = ({ children }: { children: React.React
     </StatCharterContext.Provider>
   );
 }
+
+export const GET_CHART_DATA = gql`
+  query Query($keys: [String], $stat: String, $timeframe: String, $interval: String, $category: String) {
+    getChartData(keys: $keys, stat: $stat, timeframe: $timeframe, interval: $interval, category: $category) {
+      player_key
+      interval
+      stat
+      player_name
+    }
+  }
+`;
