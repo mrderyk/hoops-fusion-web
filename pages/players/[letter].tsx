@@ -1,10 +1,9 @@
 import { gql } from '@apollo/client';
 import { apolloClient } from '../../lib/apollo-client';
-import { Header } from '../../src/shared-components/Header';
-import { Link as NavLinkProps, Nav } from '../../src/shared-components/Nav';
-import { PageWrapper } from '../../src/shared-components/PageWrapper';
-import { Search } from '../../src/widgets/Search';
-import { SectionWrapper } from '../../src/shared-components/page';
+import { Header } from 'shared-components/Header';
+import { Link as NavLinkProps, Nav } from 'src/shared-components/Nav';
+import { PageWrapper } from 'shared-components/PageWrapper';
+import { SectionWrapper } from 'shared-components/Page/styled';
 import { Directory } from './components/Directory';
 import { Letter, MainTitle, SearchInnerWrapper, SearchWrapper } from './components/styled';
 
@@ -42,16 +41,7 @@ export default function Players({ letter, initialData }: {letter: string, initia
         <MainTitle>PLAYERS:</MainTitle>
         <Letter>{letter.toUpperCase()}</Letter>
       </Header>
-      <Nav
-        links={navLinks}
-        extras={[
-          <SearchWrapper>
-            <SearchInnerWrapper>
-              <Search size={'12px'} />
-            </SearchInnerWrapper>
-          </SearchWrapper>
-        ]}
-      />
+      <Nav links={navLinks} />
       <SectionWrapper>
         <Directory entries={directoryEntries} />
       </SectionWrapper>

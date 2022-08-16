@@ -57,7 +57,6 @@ export const Form = styled.form`
 
 export const FieldsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   height: 100%;
 `;
 

@@ -1,4 +1,4 @@
-import { ChartData, ChartTitle } from '../../Charts';
+import { ChartData, ChartTitle } from '../../Chart';
 
 // TODO: Lock action types with payload types
 export type StatCharterActionType =

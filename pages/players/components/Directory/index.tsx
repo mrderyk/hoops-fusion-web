@@ -17,7 +17,7 @@ export const Directory: React.FC<DirectoryProps> = ({ entries }) => {
     <DirectoryList>
     {
       entries.map((entry: DirectoryEntry) => (
-        <DirectoryListItem>
+        <DirectoryListItem key={`directory_entry_${entry.key}`}>
           <DirectoryLink href={`/player/${entry.key}`}>
             <DirectoryImage src={entry.imgUrl} />
             <LastName>{entry.lastName}</LastName>,

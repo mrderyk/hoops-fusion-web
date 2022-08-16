@@ -51,7 +51,7 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect }) => {
         setResults(null);
         return;
       }
-
+  
       getSearchResults({ variables: { searchString: searchString.toLowerCase() } })
     }, 1000),
     []
@@ -61,8 +61,6 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect }) => {
     setSearchTerm(e.currentTarget.value);
     doSearch(e.currentTarget.value.trim());
   };
-
-  //const onSetFilter = (filter: string) => setFilter(filter as Filter);
 
   const onBlur: React.FocusEventHandler<HTMLInputElement> = (e: React.FocusEvent<HTMLInputElement>) => {
     if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
@@ -145,7 +143,7 @@ interface SearchResultProps {
 
 const SearchResult: React.FC<SearchResultProps> = ({ firstName, lastName, imgUrl, entityKey, teamCode, fontSize, onSelect }: SearchResultProps) => {
   return (
-    <Result tabIndex={0} onClick={onSelect}>
+    <Result key={entityKey} tabIndex={0} onClick={onSelect}>
       <ResultImage src={imgUrl} />
       <ResultLabels>
         <ResultName fontSize={fontSize}>

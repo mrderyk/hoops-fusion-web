@@ -1,5 +1,5 @@
-import { ChartData } from "../../Charts";
-import { PlayerData, StatCategory, StatCharterAction, StatCharterActionType, StatInterval, StatPeriod, StatType } from "./types";
+import { ChartData } from '../../Chart';
+import { PlayerData, StatCategory, StatCharterAction, StatCharterActionType, StatInterval, StatPeriod, StatType } from './types';
 
 export const setStatInterval = (interval: StatInterval): StatCharterAction => {
   return {

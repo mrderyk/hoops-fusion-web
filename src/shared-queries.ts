@@ -119,3 +119,14 @@ export const GET_PLAYER_STATS = gql`
     }
   }
 `;
+
+export const GET_CHART_DATA = gql`
+  query Query($keys: [String], $stat: String, $timeframe: String, $interval: String, $category: String) {
+    getChartData(keys: $keys, stat: $stat, timeframe: $timeframe, interval: $interval, category: $category) {
+      player_key
+      interval
+      stat
+      player_name
+    }
+  }
+`;

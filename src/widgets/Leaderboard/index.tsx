@@ -1,8 +1,8 @@
 import { gql, useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { PlayerImage } from "../../../pages/home/components/Leaderboards/styled";
-import { StatsTable, Table } from "../Tables";
-import { Wrapper } from "./styled";
+import { PlayerImage } from 'page-components/home/Leaderboards/styled';
+import { Table } from "../Tables";
+import { Link, Wrapper } from "./styled";
 
 interface LeaderboardProps {
   title: string;
@@ -67,7 +67,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ title, stat, period })
             leadersData.map((leaderData: Leader) => {
               return [
                 <PlayerImage src={leaderData.imgUrl} />,
-                `${leaderData.firstName} ${leaderData.lastName}`,
+                <Link href={`/player/${leaderData.key}`}>{`${leaderData.firstName} ${leaderData.lastName}`}</Link>,
                 `${leaderData.stat}`
               ];
             })

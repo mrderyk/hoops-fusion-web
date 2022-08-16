@@ -10,7 +10,6 @@ const buildSearchUrl = (searchTerm: string) => {
   return `${SEARCH_URL_BASE}/${encodedSearchTerm}?c=ciojs-client-${CIOJS_VERSION}&key=${CONSTRUCTOR_IO_KEY}&num_results_per_page=${RESULTS_PER_PAGE}`;
 };
 
-
 const handler = async (req: any, res: any) => {
   const { search } = req.query;
   const searchUrl = buildSearchUrl(search);

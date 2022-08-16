@@ -1,13 +1,13 @@
 import { NextPage } from 'next';
-import { Header } from '../../src/shared-components/Header';
-import { Title } from '../../src/shared-components/Header/styled';
-import { Nav } from '../../src/shared-components/Nav';
-import { SearchWrapper } from '../../src/shared-components/Nav/styled';
-import { PageContentWrapper } from '../../src/shared-components/PageContentWrapper';
-import { PageWrapper } from '../../src/shared-components/PageWrapper';
-import { Search } from '../../src/widgets/Search';
+import { Header } from 'shared-components/Header';
+import { Title } from 'shared-components/Header/styled';
+import { Nav } from 'shared-components/Nav';
+import { SearchWrapper } from 'shared-components/Nav/styled';
+import { PageContentWrapper } from 'shared-components/PageContentWrapper';
+import { PageWrapper } from 'shared-components/PageWrapper';
+import { Search } from 'widgets/Search';
 import { SearchInnerWrapper } from '../players/components/styled';
-import { StatCharter as StatCharterWidget } from '../../src/widgets/StatCharter';
+import { StatCharter as StatCharterWidget } from 'widgets/StatCharter';
 
 
 const StatCharter: NextPage = () => {
@@ -26,16 +26,7 @@ const StatCharter: NextPage = () => {
       <Header>
         <Title>STAT CHARTER</Title>
       </Header>
-      <Nav
-        links={links}
-        extras={[
-          <SearchWrapper>
-            <SearchInnerWrapper>
-              <Search size={'12px'} />
-            </SearchInnerWrapper>
-          </SearchWrapper>
-        ]}
-      />
+      <Nav links={links} />
       <PageContentWrapper>
         <StatCharterWidget />
       </PageContentWrapper>

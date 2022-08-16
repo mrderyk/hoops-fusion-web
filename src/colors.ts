@@ -4,6 +4,7 @@ export const yellow = '#FCB512';
 export const darkGray = '#333333';
 export const white = '#FFFFFF';
 export const lightGray = '#EEEEEE';
+export const midGray = '#AAAAAA';
 export const black = '#000000';
 
 export const chart: {[key: string]: string} = {

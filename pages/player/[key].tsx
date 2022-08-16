@@ -1,12 +1,12 @@
 import { getAllPlayerKeys, getInitialPlayerData } from './queries';
-import { PopupCharter } from '../../src/features/player/components/PopupCharter';
-import { Header, HeaderProps } from '../../src/features/player/components/Header';
-import { Nav } from '../../src/features/player/components/Nav';
-import { Stats } from '../../src/features/player/components/Stats';
-import { Trends } from '../../src/features/player/components/Trends';
-import { PageWrapper } from '../../src/shared-components/PageWrapper';
-import { PrimaryContent, SecondaryContent, Wrapper } from './components/styled';
-import { Socials } from '../../src/features/player/components/Socials';
+import { PageWrapper } from 'shared-components/PageWrapper';
+import { PrimaryContent, SecondaryContent, Wrapper } from 'page-components/player/styled';
+import { PopupCharter } from 'page-components/player/PopupCharter';
+import { Header, HeaderProps } from 'page-components/player/Header';
+import { Nav } from 'page-components/player/Nav';
+import { Stats } from 'page-components/player/Stats';
+import { Trends } from 'page-components/player/Trends';
+import { Socials } from 'page-components/player/Socials';
 
 interface PlayerPageProps extends HeaderProps {
   twitter: string;

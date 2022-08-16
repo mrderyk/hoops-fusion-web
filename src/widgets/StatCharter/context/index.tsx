@@ -12,6 +12,7 @@ import {
 } from './actions';
 import { compileAgewiseChartData, compileYearwiseChartData, getSubtitleFromChartConfig, getTitleFromStatType } from './parsers';
 import { PlayerData, RawChartDatapoint, StatCategory, StatCharterAction, StatCharterState, StatInterval, StatPeriod, StatType } from './types';
+import { GET_CHART_DATA } from 'src/shared-queries';
 
 const initialState: StatCharterState = {
   playersData: [],
@@ -134,14 +135,3 @@ export const StatCharterContextProvider = ({ children }: { children: React.React
     </StatCharterContext.Provider>
   );
 }
-
-export const GET_CHART_DATA = gql`
-  query Query($keys: [String], $stat: String, $timeframe: String, $interval: String, $category: String) {
-    getChartData(keys: $keys, stat: $stat, timeframe: $timeframe, interval: $interval, category: $category) {
-      player_key
-      interval
-      stat
-      player_name
-    }
-  }
-`;

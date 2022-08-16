@@ -29,3 +29,24 @@ export const Title = styled.div`
   font-weight: 600;
   padding-right: 1rem;
 `
+
+export const TopLinks= styled.ul`
+  background: ${colors.white};
+  box-sizing: border-box;
+  color: ${colors.darkGray};
+  display: flex;
+  font-size: .6rem;
+  font-weight: 600;
+  list-style-type: none;
+  margin: 0;
+  padding: .4rem .4rem;
+  justify-content: right;
+
+  & > li {
+    margin-left: .5rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
