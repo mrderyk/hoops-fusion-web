@@ -25,7 +25,7 @@ export const getInitialPlayerData = async (key: string) => {
   const { data } = await apolloClient.query({
     query: gql`
       query GetInitialPlayerData {
-        player(key: "${key}") {
+        getPlayer(key: "${key}") {
           key
           firstName
           lastName
@@ -50,6 +50,6 @@ export const getInitialPlayerData = async (key: string) => {
 
   return {
     key,
-    ...data.player[0],
+    ...data.getPlayer[0],
   };
 }
