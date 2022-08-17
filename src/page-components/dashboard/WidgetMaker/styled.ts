@@ -146,3 +146,24 @@ export const ConfiguratorColumn = styled.div`
     padding-right: 0;
   }
 `;
+
+export const AddWidgetWrapper = styled.div`
+  text-align: right;
+
+  & > button {
+    background-color: ${colors.white};
+    border: 1px solid ${colors.darkGray};
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: .6rem;
+    font-weight: 600;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 100px;
+
+    &:hover {
+      background-color: ${colors.lightGray};
+    }
+  }
+`;

@@ -52,6 +52,9 @@ export default function Dashboard() {
         links: [{
           text: 'PLAYER DIRECTORY',
           href: '/players/a'
+        }, {
+          text: 'STAT CHARTER',
+          href: '/stat-charter',
         }]
       }}
     >

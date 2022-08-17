@@ -13,13 +13,10 @@ const Home: NextPage = () => {
   const links = [
     {
       text: 'PLAYER DIRECTORY',
-      href: '/players',
+      href: '/players/a',
     }, {
       text: 'STAT CHARTER',
       href: '/stat-charter',
-    }, {
-      text: 'DASHBOARD',
-      href: '/dashboard'
     }
   ];
 
