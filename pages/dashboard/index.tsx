@@ -1,4 +1,4 @@
-import { MainTitle } from 'pages/players/components/styled';
+import { MainTitle } from 'shared-components/MainTitle';
 import React, { useEffect, useState } from 'react';
 import {
   Page,

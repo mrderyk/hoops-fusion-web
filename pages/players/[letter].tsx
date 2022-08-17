@@ -5,7 +5,8 @@ import { Link as NavLinkProps, Nav } from 'src/shared-components/Nav';
 import { PageWrapper } from 'shared-components/PageWrapper';
 import { SectionWrapper } from 'shared-components/Page/styled';
 import { Directory } from './components/Directory';
-import { Letter, MainTitle, SearchInnerWrapper, SearchWrapper } from './components/styled';
+import { Letter } from './components/styled';
+import { MainTitle } from 'shared-components/MainTitle';
 
 const LETTERS = [
   'a', 'b', 'c', 'd', 'e', 'f',
