@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const ChartWrapper = styled.div`
   box-sizing: border-box;
   cursor: pointer;
-  min-width: 480px;
   padding: 1rem;
   width: 100%;
   height: auto;

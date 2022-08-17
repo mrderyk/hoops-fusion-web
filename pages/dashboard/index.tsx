@@ -1,5 +1,6 @@
-import { MainTitle } from 'shared-components/MainTitle';
 import React, { useEffect, useState } from 'react';
+import { MainTitle } from 'shared-components/MainTitle';
+import { Plock } from 'react-plock';
 import {
   Page,
   Section,
@@ -56,11 +57,9 @@ export default function Dashboard() {
     >
       <Section>
         <WidgetMaker onAddWidget={onAddWidget} />
-        <div style={{display: 'flex'}}>
-        {
-          widgets
-        }
-        </div>
+        <Plock>
+          { widgets }
+        </Plock>
       </Section>
     </Page>
   );

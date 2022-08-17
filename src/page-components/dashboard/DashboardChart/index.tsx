@@ -4,6 +4,7 @@ import { GET_CHART_DATA } from 'src/shared-queries';
 import { Chart, ChartData } from 'widgets/Chart';
 import { compileAgewiseChartData, compileYearwiseChartData } from 'widgets/StatCharter/context/parsers';
 import { ChartWidgetConfig, PlayerData } from '../WidgetMaker/context/types';
+import { Wrapper } from './styled';
 
 interface DashboardChartProps {
   config: ChartWidgetConfig
@@ -45,11 +46,11 @@ export const DashboardChart: React.FC<DashboardChartProps> = ({ config }) => {
   if (!chartData) return null;
 
   return (
-    <div style={{border: '1px solid green'}}>
-    <Chart
-      title={{main: ''}}
-      {...chartData}
-    />
-    </div>
+    <Wrapper>
+      <Chart
+        title={{main: ''}}
+        {...chartData}
+      />
+    </Wrapper>
   )
 };

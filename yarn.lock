@@ -2622,6 +2622,11 @@
     "react-lifecycles-compat" "^3.0.0"
     "warning" "^4.0.3"
 
+"react-plock@^2.0.0":
+  "integrity" "sha512-m3ByNGVixwmSTRiz+50kyDzy+Ccj9mODOFqh+f/gTnmb7OLYErsF6cEWK1fgc3hifMJGte5SLtCGPSIoP/k5hA=="
+  "resolved" "https://registry.npmjs.org/react-plock/-/react-plock-2.0.0.tgz"
+  "version" "2.0.0"
+
 "react-twitter-embed@^4.0.4":
   "integrity" "sha512-2JIL7qF+U62zRzpsh6SZDXNI3hRNVYf5vOZ1WRcMvwKouw+xC00PuFaD0aEp2wlyGaZ+f4x2VvX+uDadFQ3HVA=="
   "resolved" "https://registry.npmjs.org/react-twitter-embed/-/react-twitter-embed-4.0.4.tgz"
@@ -2629,7 +2634,7 @@
   dependencies:
     "scriptjs" "^2.5.9"
 
-"react@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0", "react@18.2.0":
+"react@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0", "react@18.1.0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
