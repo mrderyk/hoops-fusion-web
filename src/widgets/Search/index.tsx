@@ -7,13 +7,14 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const GET_PLAYERS_SEARCH_RESULTS = gql`
-  query SearchPlayers($searchString: String!) {
-    searchPlayers(searchString: $searchString) {
+  query SearchPlayers($searchString: String!, $hasTwitter: Boolean) {
+    searchPlayers(searchString: $searchString, hasTwitter: $hasTwitter) {
       firstName
       lastName
       imgUrl
       key
       teamCode
+      twitter
     }
   }
 `;
@@ -26,14 +27,16 @@ export interface SearchResultData {
   imgUrl: string | undefined;
   key: string;
   teamCode: string;
+  twitter: string;
 }
 
 interface SearchProps {
   size?: string;
   onSelect?: (resultData: SearchResultData) => void;
+  hasTwitter?: boolean;
 }
 
-export const Search: React.FC<SearchProps> = ({ size, onSelect }) => {
+export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter }) => {
   const [ results, setResults ] = useState<SearchResultData[] | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const { push } = useRouter();
@@ -52,7 +55,12 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect }) => {
         return;
       }
   
-      getSearchResults({ variables: { searchString: searchString.toLowerCase() } })
+      getSearchResults({
+        variables: {
+          searchString: searchString.toLowerCase(),
+          hasTwitter: hasTwitter,
+        }
+      })
     }, 1000),
     []
   );

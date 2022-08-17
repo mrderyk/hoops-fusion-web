@@ -8,10 +8,12 @@ import {
 import { WidgetMaker } from 'page-components/dashboard/WidgetMaker';
 import {
   ChartWidgetConfig,
+  TwitterWidgetConfig,
   WidgetConfig,
   WidgetType
 } from 'page-components/dashboard/WidgetMaker/context/types';
 import { DashboardChart } from 'page-components/dashboard/DashboardChart';
+import { DashboardTwitterFeed } from 'page-components/dashboard/DashboardTwitterFeed';
 
 interface DashboardWidgetConfig {
   type: WidgetType;
@@ -28,6 +30,10 @@ export default function Dashboard() {
       if (config.type === 'chart') {
         updatedWidgets.push(
           <DashboardChart config={config.config as ChartWidgetConfig} />
+        );
+      } else if (config.type === 'twitter') {
+        updatedWidgets.push(
+          <DashboardTwitterFeed config={config.config as TwitterWidgetConfig} />
         );
       }
     });

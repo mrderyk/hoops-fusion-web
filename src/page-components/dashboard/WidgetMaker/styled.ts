@@ -4,9 +4,8 @@ import * as colors from '../../../../src/colors';
 export const sharedWrapperStyles = () => `
   align-items: center;
   background: ${colors.white};
-  border: 1px solid ${colors.darkGray};
+  border: 1px solid ${colors.midGray};
   border-radius: 4px;
-  box-shadow: 0 0 3px 1px rgb(0 0 0 / 50%);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
@@ -67,7 +66,6 @@ export const HelperText = styled.div`
   box-sizing: border-box;
   font-size: .75rem;
   font-weight: bold;
-  padding-left: .5rem;
 `;
 
 export const ModalInnerWrapper = styled.div`
@@ -88,13 +86,16 @@ export const Tabs = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+  position: relative;
+  top: 1px;
   width: 100%;
 `;
 
 export const WidgetMakerTab = styled.li<{isSelected: boolean}>`
   align-items: center;
-  background: ${props => props.isSelected ? colors.lightGray : colors.midGray};
+  background: ${props => props.isSelected ? colors.white : colors.midGray};
   border: 1px solid ${colors.darkGray};
+  border-bottom: 1px solid ${props => props.isSelected ? colors.white : colors.darkGray };
   border-left: none;
   display: flex;
   flex-direction: column;
@@ -105,7 +106,7 @@ export const WidgetMakerTab = styled.li<{isSelected: boolean}>`
   width: 50px;
 
   &:hover {
-    background: ${colors.lightGray};
+    background: ${colors.white};
   }
   
   &:first-of-type {

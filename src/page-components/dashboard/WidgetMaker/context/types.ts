@@ -1,6 +1,7 @@
 export type WidgetMakerActionType =
   'SET_WIDGET_TYPE' |
-  'UPDATE_CHART_CONFIG';
+  'UPDATE_CHART_CONFIG' |
+  'UPDATE_TWITTER_CONFIG';
 
 export type WidgetType = 'tracker' | 'chart' | 'twitter';
 

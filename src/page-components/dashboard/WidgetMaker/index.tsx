@@ -28,9 +28,6 @@ export const WidgetMaker: React.FC<WidgetMakerProps> = ({ onAddWidget }) => {
 const ExpandButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <ExpandButtonWrapper onClick={onClick}>
-      <IconWrapper>
-        <PlusIcon />
-      </IconWrapper>
       <HelperText>{'Add a Widget'}</HelperText>
     </ExpandButtonWrapper>
     )
