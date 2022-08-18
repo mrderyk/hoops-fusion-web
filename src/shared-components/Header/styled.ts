@@ -35,7 +35,7 @@ export const TopLinks= styled.ul`
   box-sizing: border-box;
   color: ${colors.darkGray};
   display: flex;
-  font-size: .6rem;
+  font-size: .8rem;
   font-weight: 600;
   list-style-type: none;
   margin: 0;

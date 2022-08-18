@@ -54,9 +54,12 @@ const Modal: React.FC<{ isOpen: boolean, onClose: () => void, onAddWidget: (type
         </ModalHeader>
         <Configurator />
         <AddWidgetWrapper>
-          <button onClick={onClickAddWidget}>{'ADD WIDGET'}</button>
+          <button
+            style={{fontFamily: '\'IBM Plex Mono\', monospace' }}
+            onClick={onClickAddWidget}>
+            {'ADD WIDGET'}
+          </button>
         </AddWidgetWrapper>
-        
       </ModalInnerWrapper>
     </ModalWrapper>
   )

@@ -1,5 +1,5 @@
 import { Context, createContext, useReducer } from 'react';
-import { ChartWidgetConfig, HighlightsWidgetConfig, TwitterWidgetConfig, WidgetMakerAction, WidgetMakerActionType, WidgetMakerState, WidgetType } from './types';
+import { ChartWidgetConfig, HighlightsWidgetConfig, TwitterWidgetConfig, WidgetConfig, WidgetMakerAction, WidgetMakerActionType, WidgetMakerState, WidgetType } from './types';
 
 const initialState: WidgetMakerState = {
   type: 'chart',
@@ -19,9 +19,7 @@ const reducer = (state: WidgetMakerState, action: WidgetMakerAction): WidgetMake
         ...state,
         type: action.payload
       };
-    case 'UPDATE_CHART_CONFIG':
-    case 'UPDATE_TWITTER_CONFIG':
-    case 'UPDATE_HIGHLIGHTS_CONFIG':
+    case 'UPDATE_CONFIG':
       return {
         ...state,
         configuration: action.payload
@@ -40,23 +38,9 @@ export const setType = (widgetType: WidgetType): WidgetMakerAction => {
   };
 };
 
-export const updateChartConfig = (config: ChartWidgetConfig): WidgetMakerAction => {
+export const updateConfig = (config: WidgetConfig): WidgetMakerAction => {
   return {
-    type: 'UPDATE_CHART_CONFIG' as WidgetMakerActionType,
-    payload: config,
-  };
-};
-
-export const updateTwitterConfig = (config: TwitterWidgetConfig): WidgetMakerAction => {
-  return {
-    type: 'UPDATE_TWITTER_CONFIG' as WidgetMakerActionType,
-    payload: config,
-  };
-};
-
-export const updateHighlightsConfig = (config: HighlightsWidgetConfig): WidgetMakerAction => {
-  return {
-    type: 'UPDATE_HIGHLIGHTS_CONFIG' as WidgetMakerActionType,
+    type: 'UPDATE_CONFIG' as WidgetMakerActionType,
     payload: config,
   };
 };
@@ -70,9 +54,7 @@ export const WidgetMakerContextProvider = ({ children }: { children: React.React
     state,
     actions: {
       setType: (widgetType: WidgetType) => dispatch(setType(widgetType)),
-      updateChartConfig: (config: ChartWidgetConfig) => dispatch(updateChartConfig(config)),
-      updateTwitterConfig: (config: TwitterWidgetConfig) => dispatch(updateTwitterConfig(config)),
-      updateHighlightsConfig: (config: HighlightsWidgetConfig) => dispatch(updateHighlightsConfig(config)),
+      updateConfig: (config: WidgetConfig) => dispatch(updateConfig(config)),
     }
   };
 

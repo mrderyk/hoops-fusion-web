@@ -48,6 +48,6 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.h1`
   color: white;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0
 `;

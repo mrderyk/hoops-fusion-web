@@ -1,8 +1,6 @@
 export type WidgetMakerActionType =
   'SET_WIDGET_TYPE' |
-  'UPDATE_CHART_CONFIG' |
-  'UPDATE_TWITTER_CONFIG' |
-  'UPDATE_HIGHLIGHTS_CONFIG';
+  'UPDATE_CONFIG';
 
 export type WidgetType = 'tracker' | 'chart' | 'twitter' | 'highlights';
 
@@ -25,7 +23,11 @@ export interface PlayerData {
   key: string;
 }
 
-export interface ChartWidgetConfig {
+export interface SharedWidgetConfig {
+  title?: string;
+}
+
+export interface ChartWidgetConfig extends SharedWidgetConfig {
   playersData: PlayerData[],
   category: 'per_game' | 'total';
   stat: string;
@@ -33,10 +35,10 @@ export interface ChartWidgetConfig {
   period: 'regular' | 'playoffs';
 }
 
-export interface TwitterWidgetConfig {
+export interface TwitterWidgetConfig extends SharedWidgetConfig {
   username: string;
 }
 
-export interface HighlightsWidgetConfig {
+export interface HighlightsWidgetConfig extends SharedWidgetConfig {
   playerKey: string;
 }

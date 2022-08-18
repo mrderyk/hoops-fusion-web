@@ -1,12 +1,10 @@
 import { gql } from '@apollo/client';
 import { apolloClient } from '../../lib/apollo-client';
-import { Header } from 'shared-components/Header';
-import { Link as NavLinkProps, Nav } from 'src/shared-components/Nav';
-import { PageWrapper } from 'shared-components/PageWrapper';
-import { SectionWrapper } from 'shared-components/Page/styled';
+import { Link as NavLinkProps, Nav, SubNav } from 'src/shared-components/Nav';
 import { Directory } from './components/Directory';
 import { Letter } from './components/styled';
 import { MainTitle } from 'shared-components/MainTitle';
+import { Page, Section } from 'shared-components/Page';
 
 const LETTERS = [
   'a', 'b', 'c', 'd', 'e', 'f',
@@ -23,8 +21,21 @@ interface DirectoryData {
   img_url: string;
 }
 
+const navLinks = [
+  {
+    text: 'LEAGUE LEADERS',
+    href: '/league-leaders',
+  }, {
+    text: 'PLAYER DIRECTORY',
+    href: '/players/a',
+  }, {
+    text: 'STAT CHARTER',
+    href: '/stat-charter',
+  }, 
+];
+
 export default function Players({ letter, initialData }: {letter: string, initialData: {[key: string]: DirectoryData}}) {
-  const navLinks: NavLinkProps[] = LETTERS.map((letter: string) => ({
+  const letterLinks: NavLinkProps[] = LETTERS.map((letter: string) => ({
     href: `/players/${letter}`,
     text: `${letter.toUpperCase()}`
   }));
@@ -35,19 +46,22 @@ export default function Players({ letter, initialData }: {letter: string, initia
     key: data.key,
     imgUrl: data.img_url,
   }))
-  
-  return (
-    <PageWrapper>
-      <Header>
-        <MainTitle>PLAYERS:</MainTitle>
-        <Letter>{letter.toUpperCase()}</Letter>
-      </Header>
-      <Nav links={navLinks} />
-      <SectionWrapper>
-        <Directory entries={directoryEntries} />
-      </SectionWrapper>
-    </PageWrapper>
+
+  const headerContent = (
+    <>
+      <MainTitle>PLAYERS:</MainTitle>
+      <Letter>{letter.toUpperCase()}</Letter>
+    </>
   );
+
+  return (
+    <Page headerContent={headerContent}>
+      <SubNav links={letterLinks} />
+      <Section>
+        <Directory entries={directoryEntries} />
+      </Section>
+    </Page>
+  )
 }
 
 export async function getStaticPaths() {

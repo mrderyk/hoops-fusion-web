@@ -9,9 +9,13 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const TwitterWrapper = styled.div`
+export const TwitterFeedWrapper = styled.div`
+  box-sizing: border-box;
   flex: 1;
   min-width: 280px;
+  max-height: 540px;
+  overflow: scroll;
+  padding: .5rem 0;
 
   @media (max-width: 1380px) {
     flex: 0;

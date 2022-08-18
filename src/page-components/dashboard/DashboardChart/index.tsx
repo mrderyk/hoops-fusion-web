@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { GET_CHART_DATA } from 'src/shared-queries';
 import { Chart, ChartData } from 'widgets/Chart';
 import { compileAgewiseChartData, compileYearwiseChartData } from 'widgets/StatCharter/context/parsers';
+import { WidgetTitle } from '../styled';
 import { ChartWidgetConfig, PlayerData } from '../WidgetMaker/context/types';
 import { Wrapper } from './styled';
 
@@ -47,6 +48,7 @@ export const DashboardChart: React.FC<DashboardChartProps> = ({ config }) => {
 
   return (
     <Wrapper>
+      <WidgetTitle>{config.title ?? 'My Custom Widget' }</WidgetTitle>
       <Chart
         title={{main: ''}}
         {...chartData}

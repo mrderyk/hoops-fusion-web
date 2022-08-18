@@ -4,17 +4,29 @@ import { PageWrapper, SectionHeader, SectionInnerWrapper, SectionSubheader, Sect
 
 interface PageProps {
   headerContent: React.ReactNode | React.ReactNode[];
-  navConfig: NavConfig;
   children: React.ReactNode | React.ReactNode[];
 }
 
-export const Page: React.FC<PageProps> = ({ headerContent, navConfig, children }) => {
+const navLinks = [
+  {
+    text: 'LEAGUE LEADERS',
+    href: '/league-leaders',
+  }, {
+    text: 'PLAYER DIRECTORY',
+    href: '/players/a',
+  }, {
+    text: 'STAT CHARTER',
+    href: '/stat-charter',
+  }, 
+];
+
+export const Page: React.FC<PageProps> = ({ headerContent, children }) => {
   return (
     <PageWrapper>
       <Header>
         { headerContent }
       </Header>
-      <Nav links={navConfig.links} />
+      <Nav links={navLinks} />
       { children }
     </PageWrapper>
   );

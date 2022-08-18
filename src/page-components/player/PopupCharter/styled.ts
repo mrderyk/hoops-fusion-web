@@ -3,11 +3,13 @@ import * as colors from '../../../../src/colors';
 
 export const ExpandButtonWrapper = styled.div`
   align-items: center;
-  background: ${colors.white};
-  border: 1px solid ${colors.midGray};
+  background: ${colors.blue};
+  border: 1px solid ${colors.white};
   border-radius: 4px;
+  box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.7);
   bottom: 1rem;
   box-sizing: border-box;
+  color: ${colors.white};
   cursor: pointer;
   display: flex;
   padding: 0.5rem 1rem;
@@ -15,7 +17,7 @@ export const ExpandButtonWrapper = styled.div`
   right: 1rem;
 
   &:hover {
-    background: ${colors.lightGray};
+    background: ${colors.lightBlue};
   }
 `
 

@@ -3,11 +3,12 @@ import { PageWrapper } from 'shared-components/PageWrapper';
 import { PrimaryContent, SecondaryContent, Wrapper } from 'page-components/player/styled';
 import { PopupCharter } from 'page-components/player/PopupCharter';
 import { Header, HeaderProps } from 'page-components/player/Header';
-import { Nav } from 'page-components/player/Nav';
+import { Nav, SubNav } from 'shared-components/Nav'
 import { Stats } from 'page-components/player/Stats';
 import { Trends } from 'page-components/player/Trends';
 import { Socials } from 'page-components/player/Socials';
 import { Sneakers } from 'widgets/Sneakers';
+import { initial } from 'lodash';
 
 interface PlayerPageProps extends HeaderProps {
   twitter: string;
@@ -17,17 +18,49 @@ interface PlayerPageProps extends HeaderProps {
   }
 }
 
+const navLinks = [
+  {
+    text: 'LEAGUE LEADERS',
+    href: '/league-leaders',
+  }, {
+    text: 'PLAYER DIRECTORY',
+    href: '/players/a',
+  }, {
+    text: 'STAT CHARTER',
+    href: '/stat-charter',
+  }, 
+];
+
 export default function Player({ initialData }: {initialData: PlayerPageProps}) {
   const hasSocials = !!initialData.twitter ||
     !!initialData.instagram ||
     !!initialData.socials.youtubeVideoIds.length;
+
+  let subNavLinks = [
+    {
+      href: '#stats',
+      text: 'CAREER STATS',
+    },
+    {
+      href: '#trends',
+      text: 'CAREER TRENDS',
+    }
+  ];
+
+  if (hasSocials) {
+    subNavLinks.push({
+      href: '#social',
+      text: 'SOCIAL',
+    });
+  }
 
   return (
     <PageWrapper>
       <Header
         {...initialData}
       />
-      <Nav hasSocials={hasSocials} />
+      <Nav links={navLinks}/>
+      <SubNav links={subNavLinks} />
       <Wrapper>
         <PrimaryContent>
           <Stats playerKey={initialData.key} />
@@ -36,7 +69,7 @@ export default function Player({ initialData }: {initialData: PlayerPageProps}) 
         {
           hasSocials &&
           <SecondaryContent>
-           <Socials playerKey={initialData.key} />
+           <Socials playerKey={initialData.key} twitter={initialData.twitter} />
           </SecondaryContent>
         }
         

@@ -1,7 +1,7 @@
 import { SearchInnerWrapper } from "pages/players/components/styled";
 import React from "react";
 import { Search } from "widgets/Search";
-import { NavLink, SearchWrapper, Wrapper } from "./styled";
+import { NavLink, SearchWrapper, SubNavLink, SubNavWrapper, Wrapper } from "./styled";
 
 export interface Link {
   href: string;
@@ -10,10 +10,9 @@ export interface Link {
 
 export interface NavConfig {
   links: Link[];
-  extras?: React.ReactNode[];
 }
 
-export const Nav: React.FC<NavConfig> = ({ links, extras }) => {
+export const Nav: React.FC<NavConfig> = ({ links }) => {
   return (
     <Wrapper>
     {
@@ -25,9 +24,23 @@ export const Nav: React.FC<NavConfig> = ({ links, extras }) => {
     }
       <SearchWrapper>
         <SearchInnerWrapper>
-          <Search size={'12px'} />
+          <Search size={'small'} />
         </SearchInnerWrapper>
       </SearchWrapper>
     </Wrapper>
+  )
+};
+
+export const SubNav: React.FC<NavConfig> = ({ links }) => {
+  return (
+    <SubNavWrapper>
+    {
+      links.map((link: Link) => (
+        <SubNavLink key={`nav_link_${link.text}_${link.href}`}>
+          <a href={link.href}>{link.text}</a>
+        </SubNavLink>
+      ))
+    }
+    </SubNavWrapper>
   )
 };

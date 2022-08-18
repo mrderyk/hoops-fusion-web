@@ -25,6 +25,14 @@ interface DashboardWidgetConfig {
 
 
 export default function Dashboard() {
+  return (
+    <Page headerContent={<MainTitle>My Dashboard</MainTitle>}>
+      <DashboardContent />
+    </Page>
+  );
+};
+
+export const DashboardContent = () => {
   const [widgets, setWidgets] = useState<React.ReactNode[]>([]);
   const [widgetConfigs, setWidgetConfigs] = useState<DashboardWidgetConfig[]>(initialWidgetConfigs);
 
@@ -60,24 +68,11 @@ export default function Dashboard() {
   };
 
   return (
-    <Page 
-      headerContent={<MainTitle>My Dashboard</MainTitle>}
-      navConfig={{
-        links: [{
-          text: 'PLAYER DIRECTORY',
-          href: '/players/a'
-        }, {
-          text: 'STAT CHARTER',
-          href: '/stat-charter',
-        }]
-      }}
-    >
-      <Section>
+    <Section>
         <WidgetMaker onAddWidget={onAddWidget} />
         <Plock>
           { widgets }
         </Plock>
       </Section>
-    </Page>
-  );
+  )
 }

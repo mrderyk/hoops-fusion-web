@@ -22,7 +22,7 @@ export const InputWrapper = styled.div<{ hasResults: boolean, fontSize?: string 
 
 export const Input = styled.input<{fontSize?: string}>`
   border: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: ${props => props.fontSize ? props.fontSize : '1.5rem'};
   font-weight: 300;
   width: 100%;
@@ -31,13 +31,6 @@ export const Input = styled.input<{fontSize?: string}>`
     outline-width: 0;
   }
 `;
-
-export const SearchIconWrapper = styled.div`
-  box-sizing: border-box;
-  left: 0;
-  padding-left: 0.5rem;
-  position: absolute;
-`
 
 export const ResultsWrapper = styled.div`
   background-color: ${colors.white};
@@ -126,3 +119,26 @@ export const Filter = styled.span<{ selected: boolean }>`
     border-bottom: ${props => props.selected ? '2px solid blue' : '2px solid rgba(0, 0, 0, 0.5)'};
   }
 `;
+
+export const SearchInputWrapper = styled.div<{ hasResults: boolean, fontSize?: string }>`
+  align-items: center;
+  background-color: ${colors.white};
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+
+  padding: 0.5rem 1rem 0.5rem 0;
+  padding-left: ${props => props.fontSize ? parseInt(props.fontSize) + 16 + 'px' : '2.5rem'};
+  border-bottom: ${props => props.hasResults ? '1px dotted rgba(0, 0, 0, 0.5)' : '1px solid rgba(0, 0, 0, 0.5)'};
+  border-bottom-left-radius: ${props => props.hasResults ? 0 : '4px'};
+  border-bottom-right-radius: ${props => props.hasResults ? 0 : '4px'};
+`;
+
+
+export const SearchIconWrapper = styled.div`
+  box-sizing: border-box;
+  left: 0;
+  padding-left: 0.5rem;
+  position: absolute;
+`

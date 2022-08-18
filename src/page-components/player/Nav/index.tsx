@@ -18,7 +18,7 @@ export const Nav: React.FC<{hasSocials: boolean}> = ({ hasSocials }) => {
       </NavLink>
       }
       <SearchWrapper>
-        <Search size={'12px'} />
+        <Search size={'small'} />
       </SearchWrapper>
     </Wrapper>
   )

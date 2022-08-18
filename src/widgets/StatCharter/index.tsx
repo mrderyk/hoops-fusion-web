@@ -156,7 +156,7 @@ const Controls: React.FC<{}> = () => {
             </FieldWrapper>
             <FieldWrapper>
               <Label htmlFor="period">Players:</Label>
-              <Search size={'12px'} onSelect={onAddPlayer}/>
+              <Search size={'small'} onSelect={onAddPlayer}/>
             </FieldWrapper>
             <FieldWrapper style={{ flex: 1 }}>
               <AddedPlayers />

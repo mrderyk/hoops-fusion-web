@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 
 export const ControlsWrapper = styled.div`
   box-sizing: border-box;
-  border-left: 1px solid ${colors.darkGray};
   display: flex;
   height: 100%;
 `;
@@ -30,6 +29,7 @@ export const Label = styled.label`
 export const ChartWrapper = styled.div<{hasContent: boolean}>`
   align-items: center;
   background: ${props => props.hasContent ? `${colors.white}` : `${colors.lightGray}`};
+  border-right: 1px solid ${colors.darkGray};
   box-sizing: border-box;
   display: flex;
   flex: 1;
@@ -79,7 +79,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const Select = styled.select`
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: .8rem;
   width: 100%;
 `

@@ -4,23 +4,27 @@ import * as colors from '../../../../src/colors';
 export const sharedWrapperStyles = () => `
   align-items: center;
   background: ${colors.white};
-  border: 1px solid ${colors.midGray};
+  border: 1px solid ${colors.white};
   border-radius: 4px;
+  box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.7);
   box-sizing: border-box;
+  color: ${colors.darkGray};
   cursor: pointer;
   display: flex;
   
-  position: absolute;
-  top: .5rem;
-  right: .5rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+
 `;
 
 export const ExpandButtonWrapper = styled.div`
   ${sharedWrapperStyles()}
+  background: ${colors.blue};
   padding: 0.5rem 1rem;
 
   &:hover {
-    background: ${colors.lightGray};
+    background: ${colors.lightBlue};
   }
 `;
 
@@ -32,6 +36,8 @@ export const ModalWrapper = styled.div`
 export const ModalHeader = styled.div`
   align-items: center;
   background-color: ${colors.blue};
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   box-sizing: border-box;
   color: ${colors.white};
   display: flex;
@@ -173,3 +179,14 @@ export const ConfiguratorFieldsWrapper = styled.div`
   display: flex;
   height: 100%;
 `
+
+export const Input = styled.input<{fontSize?: string}>`
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: ${props => props.fontSize ? props.fontSize : '1rem'};
+  font-weight: 300;
+  width: 100%;
+
+  &:focus {
+    outline-width: 0;
+  }
+`;

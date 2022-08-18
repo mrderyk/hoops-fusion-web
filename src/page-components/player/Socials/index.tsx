@@ -5,7 +5,7 @@ import {
   SectionInnerWrapper,
   SectionWrapper
 } from 'shared-components/Page/styled';
-import { HighlightsWrapper, TwitterWrapper, Wrapper } from './styled';
+import { HighlightsWrapper, TwitterFeedWrapper, Wrapper } from './styled';
 import { Twitter } from 'widgets/Twitter';
 import { useEffect, useState } from 'react';
 
@@ -29,12 +29,14 @@ export const Socials: React.FC<SocialsProps> = ({ playerKey, twitter, instagram 
       <Wrapper>
       {
         twitter && (
-          <TwitterWrapper>
+          <>
             <SectionInnerWrapper>
               <SectionSubheader>Twitter</SectionSubheader>
-              <Twitter key={twitter} username={twitter} />
+              <TwitterFeedWrapper>
+                <Twitter key={twitter} username={twitter} />
+              </TwitterFeedWrapper>
             </SectionInnerWrapper>
-          </TwitterWrapper>
+          </>
         )
       }
       {

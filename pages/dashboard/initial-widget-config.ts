@@ -6,18 +6,21 @@ export const initialWidgetConfigs = [
   {
     "type": "highlights" as WidgetType,
     "config": {
+      "title": "Steph's Highlights",
       "playerKey": "48edf6ae-d614-543a-8efb-29226093533e"
     }
   },
   {
     "type": "twitter" as WidgetType,
     "config": {
+      "title": "LBJ's Twitter Feed",
       "username": "KingJames"
     }
   },
   {
     "type": "chart" as WidgetType,
     "config": {
+      "title": "Career PPG: Lebron vs MJ",
       "category": "per_game" as StatCategory,
       "stat": "pts" as StatType,
       "interval": "age" as StatInterval,
@@ -49,6 +52,7 @@ export const initialWidgetConfigs = [
   {
     "type": "twitter" as WidgetType,
     "config": {
+      "title": "KD's Tweets",
       "username": "KDTrey5"
     }
   }

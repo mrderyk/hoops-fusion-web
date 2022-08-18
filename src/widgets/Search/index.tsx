@@ -1,9 +1,10 @@
 import { useLazyQuery, gql } from '@apollo/client';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Filter, FiltersWrapper, Input, InputWrapper, Result, ResultImage, ResultLabels, ResultName, ResultPlayerTeam, Results, ResultsWrapper, SearchIconWrapper, Wrapper } from './styled';
+import React, { useCallback, useState } from 'react';
+import { Input, Result, ResultImage, ResultLabels, ResultName, ResultPlayerTeam, Results, ResultsWrapper, SearchIconWrapper, SearchInputWrapper, Wrapper } from './styled';
 import debounce from 'lodash.debounce'
 import { SearchIcon } from '../../icons/SearchIcon';
 import { useRouter } from 'next/router';
+import { TextInputProps } from 'shared-components/TextInput';
 
 const GET_PLAYERS_SEARCH_RESULTS = gql`
   query SearchPlayers($searchString: String!, $hasTwitter: Boolean, $hasHighlights: Boolean) {
@@ -32,7 +33,7 @@ export interface SearchResultData {
 }
 
 interface SearchProps {
-  size?: string;
+  size?: 'small' | 'large';
   onSelect?: (resultData: SearchResultData) => void;
   hasTwitter?: boolean;
   hasHighlights?: boolean;
@@ -91,15 +92,13 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter, hasH
     setResults(null);
   };
 
+  const searchInput = size === 'small' ?
+    <SmallSearchInput hasResults={!!results} onChange={onSearch} /> :
+    <SearchInput hasResults={!!results} onChange={onSearch}/>;
   return (
     <>
       <Wrapper onBlur={onBlur}>
-        <InputWrapper hasResults={!!results} fontSize={size}>
-          <SearchIconWrapper>
-            <SearchIcon size={size} />
-          </SearchIconWrapper>
-          <Input value={searchTerm} type="text" onChange={onSearch} fontSize={size}  />
-        </InputWrapper>
+        { searchInput }
         {
           results && (
             <ResultsWrapper>
@@ -166,4 +165,30 @@ const SearchResult: React.FC<SearchResultProps> = ({ firstName, lastName, imgUrl
       </ResultLabels>
     </Result>
   )
+};
+
+interface SearchInputProps extends TextInputProps {
+  hasResults: boolean;
 }
+
+const SearchInput: React.FC<SearchInputProps> = ({ onChange, value, hasResults }) => {
+  return (
+    <SearchInputWrapper hasResults={!!hasResults} fontSize={'1.5rem'}>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <Input value={value} type="text" onChange={onChange} fontSize={'1.5rem'}  />
+    </SearchInputWrapper>
+  )
+};
+
+const SmallSearchInput: React.FC<SearchInputProps> = ({ onChange, value, hasResults }) => {
+  return (
+    <SearchInputWrapper hasResults={!!hasResults} fontSize={'12px'}>
+      <SearchIconWrapper>
+        <SearchIcon size={'12px'} />
+      </SearchIconWrapper>
+      <Input value={value} type="text" onChange={onChange} fontSize={'12px'}  />
+    </SearchInputWrapper>
+  )
+};
