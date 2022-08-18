@@ -1,16 +1,17 @@
 export type WidgetMakerActionType =
   'SET_WIDGET_TYPE' |
   'UPDATE_CHART_CONFIG' |
-  'UPDATE_TWITTER_CONFIG';
+  'UPDATE_TWITTER_CONFIG' |
+  'UPDATE_HIGHLIGHTS_CONFIG';
 
-export type WidgetType = 'tracker' | 'chart' | 'twitter';
+export type WidgetType = 'tracker' | 'chart' | 'twitter' | 'highlights';
 
 export interface WidgetMakerAction {
   type: WidgetMakerActionType;
   payload: any;
 };
 
-export type WidgetConfig = ChartWidgetConfig | TwitterWidgetConfig;
+export type WidgetConfig = ChartWidgetConfig | TwitterWidgetConfig | HighlightsWidgetConfig;
 
 export interface WidgetMakerState {
   type: WidgetType;
@@ -34,4 +35,8 @@ export interface ChartWidgetConfig {
 
 export interface TwitterWidgetConfig {
   username: string;
+}
+
+export interface HighlightsWidgetConfig {
+  playerKey: string;
 }

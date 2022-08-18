@@ -1,5 +1,5 @@
 import { Context, createContext, useReducer } from 'react';
-import { ChartWidgetConfig, TwitterWidgetConfig, WidgetMakerAction, WidgetMakerActionType, WidgetMakerState, WidgetType } from './types';
+import { ChartWidgetConfig, HighlightsWidgetConfig, TwitterWidgetConfig, WidgetMakerAction, WidgetMakerActionType, WidgetMakerState, WidgetType } from './types';
 
 const initialState: WidgetMakerState = {
   type: 'chart',
@@ -20,11 +20,8 @@ const reducer = (state: WidgetMakerState, action: WidgetMakerAction): WidgetMake
         type: action.payload
       };
     case 'UPDATE_CHART_CONFIG':
-      return {
-        ...state,
-        configuration: action.payload
-      };
     case 'UPDATE_TWITTER_CONFIG':
+    case 'UPDATE_HIGHLIGHTS_CONFIG':
       return {
         ...state,
         configuration: action.payload
@@ -57,6 +54,13 @@ export const updateTwitterConfig = (config: TwitterWidgetConfig): WidgetMakerAct
   };
 };
 
+export const updateHighlightsConfig = (config: HighlightsWidgetConfig): WidgetMakerAction => {
+  return {
+    type: 'UPDATE_HIGHLIGHTS_CONFIG' as WidgetMakerActionType,
+    payload: config,
+  };
+};
+
 export const WidgetMakerContext: Context<any> = createContext<{state: WidgetMakerState; actions: string} | undefined>(undefined);
 
 export const WidgetMakerContextProvider = ({ children }: { children: React.ReactNode }) => {
@@ -68,6 +72,7 @@ export const WidgetMakerContextProvider = ({ children }: { children: React.React
       setType: (widgetType: WidgetType) => dispatch(setType(widgetType)),
       updateChartConfig: (config: ChartWidgetConfig) => dispatch(updateChartConfig(config)),
       updateTwitterConfig: (config: TwitterWidgetConfig) => dispatch(updateTwitterConfig(config)),
+      updateHighlightsConfig: (config: HighlightsWidgetConfig) => dispatch(updateHighlightsConfig(config)),
     }
   };
 

@@ -35,9 +35,26 @@ export const NameOriginWrapper = styled.div`
   padding: 10px 1.2rem;
 `;
 
-export const Name = styled.div`
+export const Name = styled.div<{ children: React.ReactNode }>`
   font-weight: 400;
-  font-size: 3.5rem;
+  font-size: ${props => 
+    props.children?.toString() && props.children?.toString().length > 20 ? 
+      '1.8rem': '3.5rem' 
+  };
+
+  @media (max-width: 1100px) {
+    font-size: ${props => 
+      props.children?.toString() && props.children?.toString().length > 20 ? 
+        '1.2rem': '2.6rem' 
+    };
+  }
+
+  @media (max-width: 960px) {
+    font-size: ${props => 
+      props.children?.toString() && props.children?.toString().length > 20 ? 
+        '1.2rem': '1.5rem' 
+    };
+  }
 `;
 
 export const Origin = styled.div`

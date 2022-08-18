@@ -7,6 +7,7 @@ import {
 } from 'shared-components/Page/styled';
 import { HighlightsWrapper, TwitterWrapper, Wrapper } from './styled';
 import { Twitter } from 'widgets/Twitter';
+import { useEffect, useState } from 'react';
 
 interface SocialsProps {
   playerKey: string;
@@ -15,6 +16,12 @@ interface SocialsProps {
 }
 
 export const Socials: React.FC<SocialsProps> = ({ playerKey, twitter, instagram }) => {
+  const [readyForIframes, setReadyForIframes] = useState(false);
+
+  useEffect(() => {
+    setReadyForIframes(true);
+  }, []);
+
   return (
     <SectionWrapper>
       <a id='social'/>
@@ -30,9 +37,13 @@ export const Socials: React.FC<SocialsProps> = ({ playerKey, twitter, instagram 
           </TwitterWrapper>
         )
       }
-      <HighlightsWrapper>
-        <Highlights playerKey={playerKey} />
-      </HighlightsWrapper>
+      {
+        readyForIframes && 
+        <HighlightsWrapper>
+          <Highlights playerKey={playerKey} />
+        </HighlightsWrapper>
+      }
+      
       </Wrapper>
     </SectionWrapper>
   )

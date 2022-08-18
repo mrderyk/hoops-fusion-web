@@ -1,9 +1,25 @@
 import { useContext, useEffect, useState } from 'react';
 import { Search, SearchResultData } from 'widgets/Search';
-import { AddedPlayer, AddedPlayerImage, AddedPlayerName, AddedPlayersEmptyState, AddedPlayersList, AddedPlayersWrapper, ControlsContentWrapper, ControlsWrapper, FieldsWrapper, FieldWrapper, Form, InputWrapper, Label, RemoveButton, Select } from 'widgets/StatCharter/styled';
+import {
+  AddedPlayer,
+  AddedPlayerImage,
+  AddedPlayerName,
+  AddedPlayersEmptyState,
+  AddedPlayersList,
+  AddedPlayersWrapper,
+  ControlsContentWrapper,
+  ControlsWrapper,
+  FieldWrapper,
+  Form,
+  InputWrapper,
+  Label,
+  RemoveButton,
+  Select
+} from 'widgets/StatCharter/styled';
 import { WidgetMakerContext } from '../context';
 import { PlayerData } from '../context/types';
 import { ConfiguratorColumn } from '../styled';
+import { ConfiguratorFieldsWrapper } from '../styled';
 
 // TODO: Extract the stat charter configurator and leverage it here.
 export const ChartConfigurator = () => {
@@ -64,7 +80,7 @@ export const ChartConfigurator = () => {
     <ControlsWrapper>
       <ControlsContentWrapper>
         <Form>
-          <FieldsWrapper>
+          <ConfiguratorFieldsWrapper>
             <ConfiguratorColumn>
               <FieldWrapper>
                 <Label htmlFor="category">Select Category:</Label>
@@ -132,7 +148,7 @@ export const ChartConfigurator = () => {
                 <AddedPlayers players={playersData} onRemove={onRemovePlayer} />
               </FieldWrapper>
             </ConfiguratorColumn>
-          </FieldsWrapper>
+          </ConfiguratorFieldsWrapper>
         </Form>
       </ControlsContentWrapper>
     </ControlsWrapper>

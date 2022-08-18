@@ -100,10 +100,10 @@ export const WidgetMakerTab = styled.li<{isSelected: boolean}>`
   display: flex;
   flex-direction: column;
   font-size: 0.5rem;
-  font-weight: 600;
+  font-weight: 400;
   height: 50px;
   justify-content: center;
-  width: 50px;
+  width: 80px;
 
   &:hover {
     background: ${colors.white};
@@ -168,3 +168,8 @@ export const AddWidgetWrapper = styled.div`
     }
   }
 `;
+
+export const ConfiguratorFieldsWrapper = styled.div`
+  display: flex;
+  height: 100%;
+`

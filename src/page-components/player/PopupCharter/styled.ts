@@ -4,10 +4,9 @@ import * as colors from '../../../../src/colors';
 export const ExpandButtonWrapper = styled.div`
   align-items: center;
   background: ${colors.white};
-  border: 1px solid ${colors.darkGray};
+  border: 1px solid ${colors.midGray};
   border-radius: 4px;
   bottom: 1rem;
-  box-shadow: 0 0 3px 1px rgb(0 0 0 / 50%);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;

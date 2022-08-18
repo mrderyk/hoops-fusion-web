@@ -4,17 +4,17 @@ import { Filter, FiltersWrapper, Input, InputWrapper, Result, ResultImage, Resul
 import debounce from 'lodash.debounce'
 import { SearchIcon } from '../../icons/SearchIcon';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const GET_PLAYERS_SEARCH_RESULTS = gql`
-  query SearchPlayers($searchString: String!, $hasTwitter: Boolean) {
-    searchPlayers(searchString: $searchString, hasTwitter: $hasTwitter) {
+  query SearchPlayers($searchString: String!, $hasTwitter: Boolean, $hasHighlights: Boolean) {
+    searchPlayers(searchString: $searchString, hasTwitter: $hasTwitter, hasHighlights: $hasHighlights) {
       firstName
       lastName
       imgUrl
       key
       teamCode
       twitter
+      highlights
     }
   }
 `;
@@ -28,15 +28,17 @@ export interface SearchResultData {
   key: string;
   teamCode: string;
   twitter: string;
+  highlights: string[];
 }
 
 interface SearchProps {
   size?: string;
   onSelect?: (resultData: SearchResultData) => void;
   hasTwitter?: boolean;
+  hasHighlights?: boolean;
 }
 
-export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter }) => {
+export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter, hasHighlights }) => {
   const [ results, setResults ] = useState<SearchResultData[] | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const { push } = useRouter();
@@ -58,7 +60,8 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter }) =>
       getSearchResults({
         variables: {
           searchString: searchString.toLowerCase(),
-          hasTwitter: hasTwitter,
+          hasTwitter,
+          hasHighlights,
         }
       })
     }, 1000),

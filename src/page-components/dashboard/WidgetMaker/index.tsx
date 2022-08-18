@@ -8,6 +8,8 @@ import { WidgetMakerContext, WidgetMakerContextProvider } from './context';
 import { WidgetConfig, WidgetType } from './context/types';
 import { ChartConfigurator } from './ChartConfigurator';
 import { TwitterConfigurator } from './TwitterConfigurator';
+import { VideoIcon } from 'src/icons/VideoIcon';
+import { HighlightsConfigurator } from './HighlightsConfigurator';
 
 interface WidgetMakerProps {
   onAddWidget: (type: WidgetType, config: WidgetConfig) => void;
@@ -89,6 +91,10 @@ const TabsView = () => {
           <TwitterIcon />
           <div>TWITTER</div>
         </WidgetMakerTab>
+        <WidgetMakerTab onClick={() => onChangeTab('highlights')} isSelected={state.type === 'highlights'}>
+          <VideoIcon />
+          <div>HIGHLIGHTS</div>
+        </WidgetMakerTab>
       </Tabs>
       <TabPanes>
         <WidgetMakerTabPane isVisible={state.type === 'chart'}>
@@ -99,6 +105,11 @@ const TabsView = () => {
         <WidgetMakerTabPane isVisible={state.type === 'twitter'}>
           <div>
             <TwitterConfigurator />
+          </div>
+        </WidgetMakerTabPane>
+        <WidgetMakerTabPane isVisible={state.type === 'highlights'}>
+          <div>
+            <HighlightsConfigurator />
           </div>
         </WidgetMakerTabPane>
       </TabPanes>

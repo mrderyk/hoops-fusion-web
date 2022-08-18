@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 
 export const TwitterWrapper = styled.div`
   flex: 1;
+  min-width: 280px;
 
   @media (max-width: 1380px) {
     flex: 0;

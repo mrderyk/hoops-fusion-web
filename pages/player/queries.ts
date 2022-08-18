@@ -21,6 +21,7 @@ export const getAllPlayerKeys = async () => {
   });
 }
 
+// TODO: Lazy load socials
 export const getInitialPlayerData = async (key: string) => {
   const { data } = await apolloClient.query({
     query: gql`
@@ -44,6 +45,10 @@ export const getInitialPlayerData = async (key: string) => {
           twitter
           instagram
         }
+
+        getPlayerSocials(key: "${key}") {
+          youtubeVideoIds
+        }
       }
     `
   });
@@ -51,5 +56,9 @@ export const getInitialPlayerData = async (key: string) => {
   return {
     key,
     ...data.getPlayer[0],
+    socials: {
+      ...data.getPlayerSocials[0],
+    },
+    
   };
 }

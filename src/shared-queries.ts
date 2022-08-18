@@ -130,3 +130,11 @@ export const GET_CHART_DATA = gql`
     }
   }
 `;
+
+export const GET_PLAYER_SOCIALS = gql`
+  query GetPlayerSocials($key: String){
+    getPlayerSocials(key: $key) {
+      youtubeVideoIds
+    }
+  }
+`;

@@ -8,21 +8,25 @@ import {
 import { WidgetMaker } from 'page-components/dashboard/WidgetMaker';
 import {
   ChartWidgetConfig,
+  HighlightsWidgetConfig,
   TwitterWidgetConfig,
   WidgetConfig,
   WidgetType
 } from 'page-components/dashboard/WidgetMaker/context/types';
 import { DashboardChart } from 'page-components/dashboard/DashboardChart';
 import { DashboardTwitterFeed } from 'page-components/dashboard/DashboardTwitterFeed';
+import { DashboardHighlightsFeed } from 'page-components/dashboard/DashboardHighlightsFeed';
+import { initialWidgetConfigs } from './initial-widget-config';
 
 interface DashboardWidgetConfig {
   type: WidgetType;
   config: WidgetConfig;
 }
 
+
 export default function Dashboard() {
   const [widgets, setWidgets] = useState<React.ReactNode[]>([]);
-  const [widgetConfigs, setWidgetConfigs] = useState<DashboardWidgetConfig[]>([]);
+  const [widgetConfigs, setWidgetConfigs] = useState<DashboardWidgetConfig[]>(initialWidgetConfigs);
 
   useEffect(() => {
     const updatedWidgets: React.ReactNode[] = [];
@@ -34,6 +38,10 @@ export default function Dashboard() {
       } else if (config.type === 'twitter') {
         updatedWidgets.push(
           <DashboardTwitterFeed config={config.config as TwitterWidgetConfig} />
+        );
+      } else if (config.type === 'highlights') {
+        updatedWidgets.push(
+          <DashboardHighlightsFeed config={config.config as HighlightsWidgetConfig} />
         );
       }
     });

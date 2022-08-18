@@ -1,6 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { HighlightIFrame, HighlightsWrapper, HighlightWrapper } from './styled';
+import { GET_PLAYER_SOCIALS } from '../../shared-queries';
 
 interface HighlightsProps {
   playerKey: string;
@@ -9,7 +10,6 @@ interface HighlightsProps {
 export const Highlights: React.FC<HighlightsProps> = ({ playerKey }) => {
   const [youtubeVideoIds, setYoutubeVideoIds] = useState<string[] | null>(null);
   const { loading } = useQuery(GET_PLAYER_SOCIALS, {
-    fetchPolicy: 'network-only',
     variables: {
       key: playerKey,
     },
@@ -47,11 +47,3 @@ const Highlight: React.FC<HighlightProps> = ({ id }) => {
     </HighlightWrapper>
   )
 };
-
-const GET_PLAYER_SOCIALS = gql`
-  query GetPlayerSocials($key: String){
-    getPlayerSocials(key: $key) {
-      youtubeVideoIds
-    }
-  }
-`;

@@ -33,7 +33,10 @@ const CharterModal: React.FC<{ isOpen: boolean, onClose: () => void }> = ({ isOp
         isOpen={isOpen}
         contentLabel="Example Modal"
         style={{
-          content: {padding: 0 }
+          content: {padding: 0 },
+          overlay: {
+            zIndex: 200,
+          },
         }}
       > 
         <ModalInnerWrapper>

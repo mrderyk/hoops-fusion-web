@@ -1,7 +1,8 @@
 import { Search } from "widgets/Search";
 import { NavLink, SearchWrapper, Wrapper } from "./styled";
 
-export const Nav = () => {
+// TODO: Unify with universal header
+export const Nav: React.FC<{hasSocials: boolean}> = ({ hasSocials }) => {
   return (
     <Wrapper>
       <NavLink>
@@ -10,9 +11,12 @@ export const Nav = () => {
       <NavLink>
         <a href="#trends">CAREER TRENDS</a>
       </NavLink>
-      <NavLink>
+      {
+        hasSocials &&
+        <NavLink>
         <a href="#social">SOCIAL</a>
       </NavLink>
+      }
       <SearchWrapper>
         <Search size={'12px'} />
       </SearchWrapper>

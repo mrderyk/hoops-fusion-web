@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const PrimaryContent = styled.div`
+  flex: 1;
   padding-left: 0.5rem;
   padding-right: 0.25rem;
   width: 75%;

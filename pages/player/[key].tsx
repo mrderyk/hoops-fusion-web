@@ -7,30 +7,39 @@ import { Nav } from 'page-components/player/Nav';
 import { Stats } from 'page-components/player/Stats';
 import { Trends } from 'page-components/player/Trends';
 import { Socials } from 'page-components/player/Socials';
+import { Sneakers } from 'widgets/Sneakers';
 
 interface PlayerPageProps extends HeaderProps {
   twitter: string;
   instagram: string;
+  socials: {
+    youtubeVideoIds: string[];
+  }
 }
 
 export default function Player({ initialData }: {initialData: PlayerPageProps}) {
+  const hasSocials = !!initialData.twitter ||
+    !!initialData.instagram ||
+    !!initialData.socials.youtubeVideoIds.length;
+
   return (
     <PageWrapper>
       <Header
         {...initialData}
       />
-      <Nav />
+      <Nav hasSocials={hasSocials} />
       <Wrapper>
         <PrimaryContent>
           <Stats playerKey={initialData.key} />
           <Trends playerKey={initialData.key} />
         </PrimaryContent>
-        <SecondaryContent>
-          {
-            (!!initialData.twitter || !!initialData.instagram ) &&
-              <Socials playerKey={initialData.key} twitter={initialData.twitter} instagram={initialData.instagram} />
-          }
-        </SecondaryContent>
+        {
+          hasSocials &&
+          <SecondaryContent>
+           <Socials playerKey={initialData.key} />
+          </SecondaryContent>
+        }
+        
       </Wrapper>
       <PopupCharter />
     </PageWrapper>

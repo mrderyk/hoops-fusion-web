@@ -11,6 +11,7 @@ export const Twitter: React.FC<TwitterProps> = ({ username }) => {
       options={{
         height: 540
       }}
+      
       screenName={username}
       sourceType="profile"
       noHeader={true}
