@@ -11,6 +11,7 @@ import { TwitterConfigurator } from './TwitterConfigurator';
 import { VideoIcon } from 'src/icons/VideoIcon';
 import { HighlightsConfigurator } from './HighlightsConfigurator';
 import { SneakerIcon } from 'src/icons/SneakerIcon';
+import { SneakerConfigurator } from './SneakersConfigurator';
 
 interface WidgetMakerProps {
   onAddWidget: (type: WidgetType, config: WidgetConfig) => void;
@@ -114,6 +115,11 @@ const TabsView = () => {
         <WidgetMakerTabPane isVisible={state.type === 'highlights'}>
           <div>
             <HighlightsConfigurator />
+          </div>
+        </WidgetMakerTabPane>
+        <WidgetMakerTabPane isVisible={state.type === 'sneakers'}>
+          <div>
+            <SneakerConfigurator />
           </div>
         </WidgetMakerTabPane>
       </TabPanes>

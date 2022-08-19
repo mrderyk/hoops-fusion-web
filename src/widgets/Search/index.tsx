@@ -7,8 +7,18 @@ import { useRouter } from 'next/router';
 import { TextInputProps } from 'shared-components/TextInput';
 
 const GET_PLAYERS_SEARCH_RESULTS = gql`
-  query SearchPlayers($searchString: String!, $hasTwitter: Boolean, $hasHighlights: Boolean) {
-    searchPlayers(searchString: $searchString, hasTwitter: $hasTwitter, hasHighlights: $hasHighlights) {
+  query SearchPlayers(
+    $searchString: String!,
+    $hasTwitter: Boolean,
+    $hasHighlights: Boolean,
+    $hasSneakers: Boolean
+  ) {
+    searchPlayers(
+      searchString: $searchString,
+      hasTwitter: $hasTwitter,
+      hasHighlights: $hasHighlights,
+      hasSneakers: $hasSneakers
+    ) {
       firstName
       lastName
       imgUrl
@@ -16,6 +26,7 @@ const GET_PLAYERS_SEARCH_RESULTS = gql`
       teamCode
       twitter
       highlights
+      sneakerTokens
     }
   }
 `;
@@ -30,6 +41,7 @@ export interface SearchResultData {
   teamCode: string;
   twitter: string;
   highlights: string[];
+  sneakerTokens: string[];
 }
 
 interface SearchProps {
@@ -37,16 +49,19 @@ interface SearchProps {
   onSelect?: (resultData: SearchResultData) => void;
   hasTwitter?: boolean;
   hasHighlights?: boolean;
+  hasSneakers?: boolean;
+  placeholder?: string;
 }
 
-export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter, hasHighlights }) => {
+export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter, hasHighlights, hasSneakers, placeholder }) => {
   const [ results, setResults ] = useState<SearchResultData[] | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const { push } = useRouter();
   const [ getSearchResults, { loading }] = useLazyQuery(GET_PLAYERS_SEARCH_RESULTS, {
-    fetchPolicy: 'network-only', // Doesn't check cache before making a network request
+    fetchPolicy: 'network-only',
     onCompleted: (data: any) => {
       // TODO: Figure out how to limit via join-monster on back end
+      console.log(data.searchPlayers.slice(0, 10))
       setResults(data.searchPlayers.slice(0, 10))
     }
   });
@@ -63,6 +78,7 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter, hasH
           searchString: searchString.toLowerCase(),
           hasTwitter,
           hasHighlights,
+          hasSneakers
         }
       })
     }, 1000),
@@ -93,8 +109,8 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter, hasH
   };
 
   const searchInput = size === 'small' ?
-    <SmallSearchInput hasResults={!!results} onChange={onSearch} /> :
-    <SearchInput hasResults={!!results} onChange={onSearch}/>;
+    <SmallSearchInput hasResults={!!results} onChange={onSearch} placeholder={placeholder} /> :
+    <SearchInput hasResults={!!results} onChange={onSearch} placeholder={placeholder} />;
   return (
     <>
       <Wrapper onBlur={onBlur}>
@@ -171,24 +187,24 @@ interface SearchInputProps extends TextInputProps {
   hasResults: boolean;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ onChange, value, hasResults }) => {
+const SearchInput: React.FC<SearchInputProps> = ({ onChange, value, hasResults, placeholder }) => {
   return (
     <SearchInputWrapper hasResults={!!hasResults} fontSize={'1.5rem'}>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <Input value={value} type="text" onChange={onChange} fontSize={'1.5rem'}  />
+      <Input placeholder={placeholder} value={value} type="text" onChange={onChange} fontSize={'1.5rem'}  />
     </SearchInputWrapper>
   )
 };
 
-const SmallSearchInput: React.FC<SearchInputProps> = ({ onChange, value, hasResults }) => {
+const SmallSearchInput: React.FC<SearchInputProps> = ({ onChange, value, hasResults, placeholder}) => {
   return (
     <SearchInputWrapper hasResults={!!hasResults} fontSize={'12px'}>
       <SearchIconWrapper>
         <SearchIcon size={'12px'} />
       </SearchIconWrapper>
-      <Input value={value} type="text" onChange={onChange} fontSize={'12px'}  />
+      <Input placeholder={placeholder} value={value} type="text" onChange={onChange} fontSize={'12px'}  />
     </SearchInputWrapper>
   )
 };

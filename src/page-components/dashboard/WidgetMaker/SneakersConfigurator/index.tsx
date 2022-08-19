@@ -1,33 +1,33 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Search, SearchResultData } from 'widgets/Search';
 import { ResultImage } from 'widgets/Search/styled';
 import { WidgetMakerContext } from '../context';
-import { HighlightsWidgetConfig, TwitterWidgetConfig } from '../context/types';
-import { WithTitleInput } from '../WithTitleInput';
+import { SneakersWidgetConfig } from '../context/types';
 import { SearchResultWrapper, SearchWrapper, UserInfoWrapper, Wrapper } from './styled';
+import { WithTitleInput } from '../WithTitleInput';
 
-// TODO: Unify with TwitterConfigurator, since they are so similar
-export const HighlightsConfigurator: React.FC<{}> = () => {
+export const SneakerConfigurator: React.FC<{}> = () => {
   const [selected, setSelected] = useState<SearchResultData|null>(null);
   const onSelect = (result: SearchResultData) => {
     setSelected(result);
   };
-  const { actions } = useContext(WidgetMakerContext);
+  const { state, actions } = useContext(WidgetMakerContext);
 
   useEffect(() => {
-    if (!selected) return;
-    const updatedConfig: HighlightsWidgetConfig = {
-      playerKey: selected?.key,
+    const updatedConfig: SneakersWidgetConfig = {
+      ...state.configuration,
+      sneakerTokens: (selected as SearchResultData)?.sneakerTokens,
     };
+
     actions.updateConfig(updatedConfig);
   }, [selected]);
 
   return (
-    <WithTitleInput placeholder={'ex. Steph Curry Highlights'}>
+    <WithTitleInput placeholder={'ex. Jordans'}>
       <Wrapper>
         <SearchWrapper>
           <div>Search for a player:</div>
-          <Search size={'small'} hasHighlights={true} onSelect={onSelect} placeholder={'ex. Stephen Curry'} />
+          <Search size={'small'} hasSneakers={true} onSelect={onSelect} placeholder={'ex. Michael Jordan'} />
         </SearchWrapper>
         {
           selected && (
@@ -35,7 +35,6 @@ export const HighlightsConfigurator: React.FC<{}> = () => {
               <ResultImage src={selected.imgUrl} />
               <UserInfoWrapper>
                 <div>{`${selected.firstName} ${selected.lastName}`}</div>
-                <div>{`${selected.highlights.length} highlights`}</div>
               </UserInfoWrapper>
             </SearchResultWrapper>
           )
@@ -43,4 +42,4 @@ export const HighlightsConfigurator: React.FC<{}> = () => {
       </Wrapper>
     </WithTitleInput>
   )
-}
+};

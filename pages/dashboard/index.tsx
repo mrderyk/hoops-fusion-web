@@ -9,6 +9,7 @@ import { WidgetMaker } from 'page-components/dashboard/WidgetMaker';
 import {
   ChartWidgetConfig,
   HighlightsWidgetConfig,
+  SneakersWidgetConfig,
   TwitterWidgetConfig,
   WidgetConfig,
   WidgetType
@@ -16,6 +17,7 @@ import {
 import { DashboardChart } from 'page-components/dashboard/DashboardChart';
 import { DashboardTwitterFeed } from 'page-components/dashboard/DashboardTwitterFeed';
 import { DashboardHighlightsFeed } from 'page-components/dashboard/DashboardHighlightsFeed';
+import { DashboardSneakersFeed } from 'page-components/dashboard/DashboardSneakersFeed';
 import { initialWidgetConfigs } from './initial-widget-config';
 
 interface DashboardWidgetConfig {
@@ -50,6 +52,10 @@ export const DashboardContent = () => {
       } else if (config.type === 'highlights') {
         updatedWidgets.push(
           <DashboardHighlightsFeed config={config.config as HighlightsWidgetConfig} />
+        );
+      } else if (config.type === 'sneakers') {
+        updatedWidgets.push(
+          <DashboardSneakersFeed config={config.config as SneakersWidgetConfig} />
         );
       }
     });

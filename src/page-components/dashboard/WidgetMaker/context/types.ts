@@ -2,14 +2,14 @@ export type WidgetMakerActionType =
   'SET_WIDGET_TYPE' |
   'UPDATE_CONFIG';
 
-export type WidgetType = 'tracker' | 'chart' | 'twitter' | 'highlights';
+export type WidgetType = 'tracker' | 'chart' | 'twitter' | 'highlights' | 'sneakers';
 
 export interface WidgetMakerAction {
   type: WidgetMakerActionType;
   payload: any;
 };
 
-export type WidgetConfig = ChartWidgetConfig | TwitterWidgetConfig | HighlightsWidgetConfig;
+export type WidgetConfig = ChartWidgetConfig | TwitterWidgetConfig | HighlightsWidgetConfig | SneakersWidgetConfig;
 
 export interface WidgetMakerState {
   type: WidgetType;
@@ -41,4 +41,8 @@ export interface TwitterWidgetConfig extends SharedWidgetConfig {
 
 export interface HighlightsWidgetConfig extends SharedWidgetConfig {
   playerKey: string;
+}
+
+export interface SneakersWidgetConfig extends SharedWidgetConfig {
+  sneakerTokens: string[];
 }

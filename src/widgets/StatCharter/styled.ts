@@ -72,6 +72,10 @@ export const SubmitButtonWrapper = styled.div`
   box-sizing: border-box;
   padding: .25rem 0;
   text-align: right;
+
+  & > button {
+    font-family: 'IBM Plex Mono', monospace;
+  }
 `;
 
 export const InputWrapper = styled.div`

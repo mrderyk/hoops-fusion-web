@@ -27,7 +27,7 @@ export const TwitterConfigurator: React.FC<{}> = () => {
       <Wrapper>
         <SearchWrapper>
           <div>Search for a player:</div>
-          <Search size={'small'} hasTwitter={true} onSelect={onSelect} />
+          <Search size={'small'} hasTwitter={true} onSelect={onSelect} placeholder={'ex. Kevin Durant'} />
         </SearchWrapper>
         {
           selected && (

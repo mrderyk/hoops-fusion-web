@@ -24,7 +24,7 @@ export const Nav: React.FC<NavConfig> = ({ links }) => {
     }
       <SearchWrapper>
         <SearchInnerWrapper>
-          <Search size={'small'} />
+          <Search size={'small'} placeholder={'ex. Michael Jordan'} />
         </SearchInnerWrapper>
       </SearchWrapper>
     </Wrapper>
