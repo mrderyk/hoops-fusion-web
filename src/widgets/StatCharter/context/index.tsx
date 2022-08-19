@@ -85,6 +85,11 @@ export const StatCharterContextProvider = ({ children }: { children: React.React
     fetchPolicy: 'network-only', 
     onCompleted: (data: any) => {
       const rawDatapoints: RawChartDatapoint[] = data.getChartData;
+      if (['fgpct', 'ftpct', 'fg2pct', 'fg3pct'].includes(state.statType)) {
+        rawDatapoints.forEach((rawDatapoint: RawChartDatapoint, index: number) => {
+          rawDatapoints[index].stat = parseFloat((rawDatapoint.stat * 100).toFixed(2));
+        });
+      }
       if (state.interval === 'age') {
         dispatch(
           setChartData(compileAgewiseChartData(rawDatapoints, state.statType))
