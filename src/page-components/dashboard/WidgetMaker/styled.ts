@@ -8,20 +8,19 @@ export const sharedWrapperStyles = () => `
   border-radius: 4px;
   box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.7);
   box-sizing: border-box;
-  color: ${colors.darkGray};
+  
   cursor: pointer;
   display: flex;
-  
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-
 `;
 
 export const ExpandButtonWrapper = styled.div`
   ${sharedWrapperStyles()}
   background: ${colors.blue};
+  color: ${colors.white};
+  bottom: 1rem;
   padding: 0.5rem 1rem;
+  position: fixed;
+  right: 1rem;
 
   &:hover {
     background: ${colors.lightBlue};
@@ -30,6 +29,10 @@ export const ExpandButtonWrapper = styled.div`
 
 export const ModalWrapper = styled.div`
   ${sharedWrapperStyles()}
+  color: ${colors.darkGray};
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
   width: 520px;
 `;
 
