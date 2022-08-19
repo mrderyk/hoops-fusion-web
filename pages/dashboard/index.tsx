@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MainTitle } from 'shared-components/MainTitle';
-import { Plock } from 'react-plock';
+import Masonry from '@mui/lab/Masonry';
 import {
   Page,
   Section,
@@ -76,9 +76,9 @@ export const DashboardContent = () => {
   return (
     <Section>
         <WidgetMaker onAddWidget={onAddWidget} />
-        <Plock>
+        <Masonry columns={3} spacing={2}>
           { widgets }
-        </Plock>
+        </Masonry>
       </Section>
   )
 }

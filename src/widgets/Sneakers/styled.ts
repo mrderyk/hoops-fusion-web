@@ -18,7 +18,7 @@ export const SneakerWrapper = styled.li<{imgUrl: string}>`
   margin: .5rem 0;
   position: relative;
 
-  max-width: 280px;
+  max-width: 100%;
 
   &:hover {
     background-color: ${colors.lightGray};
