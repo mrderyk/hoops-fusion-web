@@ -1,6 +1,9 @@
 {
   "name": "hoops-fusion-next",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.6.0"
+  },
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development next dev",
