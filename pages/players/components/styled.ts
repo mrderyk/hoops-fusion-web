@@ -10,12 +10,17 @@ export const Letter = styled.div`
 export const SearchWrapper = styled.li`
   box-sizing: border-box;
   flex: 1;
-  text-align: right;
 `;
 
 export const SearchInnerWrapper = styled.div`
   position: relative;
-  right: 0;
-  left: 50%;
-  width: 50%;
+  padding-left: 50%;
+
+  @media (max-width: 1100px) {
+    padding-left: 40%;
+  }
+
+  @media (max-width: 1100px) {
+    padding-left: 25%;
+  }
 `

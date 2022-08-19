@@ -10,6 +10,7 @@ import { ChartConfigurator } from './ChartConfigurator';
 import { TwitterConfigurator } from './TwitterConfigurator';
 import { VideoIcon } from 'src/icons/VideoIcon';
 import { HighlightsConfigurator } from './HighlightsConfigurator';
+import { SneakerIcon } from 'src/icons/SneakerIcon';
 
 interface WidgetMakerProps {
   onAddWidget: (type: WidgetType, config: WidgetConfig) => void;
@@ -82,10 +83,6 @@ const TabsView = () => {
   return (
     <>
       <Tabs>
-        <WidgetMakerTab onClick={() => onChangeTab('tracker')} isSelected={state.type === 'tracker'}>
-          <EyeIcon />
-          <div>TRACKER</div>
-        </WidgetMakerTab>
         <WidgetMakerTab onClick={() => onChangeTab('chart')} isSelected={state.type === 'chart'}>
           <ChartIcon />
           <div>CHART</div>
@@ -97,6 +94,10 @@ const TabsView = () => {
         <WidgetMakerTab onClick={() => onChangeTab('highlights')} isSelected={state.type === 'highlights'}>
           <VideoIcon />
           <div>HIGHLIGHTS</div>
+        </WidgetMakerTab>
+        <WidgetMakerTab onClick={() => onChangeTab('sneakers')} isSelected={state.type === 'sneakers'}>
+          <SneakerIcon />
+          <div>SNEAKERS</div>
         </WidgetMakerTab>
       </Tabs>
       <TabPanes>

@@ -56,5 +56,4 @@ export const SearchWrapper = styled.li`
   box-sizing: border-box;
   flex: 1;
   text-align: right;
-  padding: 0 1rem 0 50%;
 `;
