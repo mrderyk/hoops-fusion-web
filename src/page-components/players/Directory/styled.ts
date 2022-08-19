@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { black, blue } from '../../../../src/colors';
+import { black, blue } from '../../../colors';
 
 export const DirectoryList = styled.ul`
   list-style-type: none;

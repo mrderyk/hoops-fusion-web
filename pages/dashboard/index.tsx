@@ -18,13 +18,12 @@ import { DashboardChart } from 'page-components/dashboard/DashboardChart';
 import { DashboardTwitterFeed } from 'page-components/dashboard/DashboardTwitterFeed';
 import { DashboardHighlightsFeed } from 'page-components/dashboard/DashboardHighlightsFeed';
 import { DashboardSneakersFeed } from 'page-components/dashboard/DashboardSneakersFeed';
-import { initialWidgetConfigs } from './initial-widget-config';
+import { initialWidgetConfigs } from '../../src/initial-widget-config';
 
 interface DashboardWidgetConfig {
   type: WidgetType;
   config: WidgetConfig;
 }
-
 
 export default function Dashboard() {
   return (

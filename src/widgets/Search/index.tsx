@@ -61,7 +61,6 @@ export const Search: React.FC<SearchProps> = ({ size, onSelect, hasTwitter, hasH
     fetchPolicy: 'network-only',
     onCompleted: (data: any) => {
       // TODO: Figure out how to limit via join-monster on back end
-      console.log(data.searchPlayers.slice(0, 10))
       setResults(data.searchPlayers.slice(0, 10))
     }
   });

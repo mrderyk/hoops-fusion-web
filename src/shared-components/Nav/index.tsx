@@ -1,7 +1,7 @@
-import { SearchInnerWrapper } from "pages/players/components/styled";
-import React from "react";
-import { Search } from "widgets/Search";
-import { NavLink, SearchWrapper, SubNavLink, SubNavWrapper, Wrapper } from "./styled";
+import { SearchInnerWrapper } from 'page-components/players/styled';
+import React from 'react';
+import { Search } from 'widgets/Search';
+import { NavLink, SearchWrapper, SubNavLink, SubNavWrapper, Wrapper } from './styled';
 
 export interface Link {
   href: string;

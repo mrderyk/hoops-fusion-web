@@ -1,4 +1,3 @@
-import { getAllPlayerKeys, getInitialPlayerData } from './queries';
 import { PageWrapper } from 'shared-components/PageWrapper';
 import { PrimaryContent, SecondaryContent, Wrapper } from 'page-components/player/styled';
 import { PopupCharter } from 'page-components/player/PopupCharter';
@@ -7,8 +6,8 @@ import { Nav, SubNav } from 'shared-components/Nav'
 import { Stats } from 'page-components/player/Stats';
 import { Trends } from 'page-components/player/Trends';
 import { Socials } from 'page-components/player/Socials';
-import { Sneakers } from 'widgets/Sneakers';
-import { initial } from 'lodash';
+import { apolloClient } from 'lib/apollo-client';
+import { gql } from '@apollo/client';
 
 interface PlayerPageProps extends HeaderProps {
   twitter: string;
@@ -35,7 +34,7 @@ const navLinks = [
 export default function Player({ initialData }: {initialData: PlayerPageProps}) {
   const hasSocials = !!initialData.twitter ||
     !!initialData.instagram ||
-    !!initialData.socials.youtubeVideoIds.length;
+    !!initialData.socials.youtubeVideoIds?.length;
 
   let subNavLinks = [
     {
@@ -84,6 +83,69 @@ export default function Player({ initialData }: {initialData: PlayerPageProps}) 
   );
 }
 
+const getAllPlayerKeys = async () => {
+  const { data } = await apolloClient.query({
+    query: gql`
+      query Query {
+        getAllPlayerKeys {
+          key
+        }
+      }
+    `
+  });
+  
+  const keys = data.getAllPlayerKeys.map((playerKeyEntry: any) => playerKeyEntry.key);
+
+  return keys.map((key: string) => {
+    return {
+      params: { key },
+    };
+  });
+}
+
+// TODO: Lazy load socials
+const getInitialPlayerData = async (key: string) => {
+  const { data } = await apolloClient.query({
+    query: gql`
+      query GetInitialPlayerData {
+        getPlayer(key: "${key}") {
+          key
+          firstName
+          lastName
+          imgUrl
+          number
+          position
+          fullName
+          birthCity
+          birthState
+          birthCountry
+          dob,
+          height
+          weight
+          team
+          draftYear
+          twitter
+          instagram
+        }
+
+        getPlayerSocials(key: "${key}") {
+          youtubeVideoIds
+          sneakerTokens
+        }
+      }
+    `
+  });
+
+  return {
+    key,
+    ...data.getPlayer[0],
+    socials: {
+      ...data.getPlayerSocials[0],
+    },
+    
+  };
+}
+
 export async function getStaticPaths() {
   const paths = await getAllPlayerKeys();
   return {
@@ -94,7 +156,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params } : { params: any }) {
   const initialData = await getInitialPlayerData(params.key);
-  console.log('init', initialData)
   return {
     props: {
       initialData,

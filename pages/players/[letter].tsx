@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 import { apolloClient } from '../../lib/apollo-client';
-import { Link as NavLinkProps, Nav, SubNav } from 'src/shared-components/Nav';
-import { Directory } from './components/Directory';
-import { Letter } from './components/styled';
+import { Link as NavLinkProps, SubNav } from 'src/shared-components/Nav';
+import { Directory } from '../../src/page-components/players/Directory';
+import { Letter } from '../../src/page-components/players/styled';
 import { MainTitle } from 'shared-components/MainTitle';
 import { Page, Section } from 'shared-components/Page';
 
