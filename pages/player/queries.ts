@@ -48,6 +48,7 @@ export const getInitialPlayerData = async (key: string) => {
 
         getPlayerSocials(key: "${key}") {
           youtubeVideoIds
+          sneakerTokens
         }
       }
     `

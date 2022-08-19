@@ -15,6 +15,7 @@ interface PlayerPageProps extends HeaderProps {
   instagram: string;
   socials: {
     youtubeVideoIds: string[];
+    sneakerTokens: string[];
   }
 }
 
@@ -69,7 +70,11 @@ export default function Player({ initialData }: {initialData: PlayerPageProps}) 
         {
           hasSocials &&
           <SecondaryContent>
-           <Socials playerKey={initialData.key} twitter={initialData.twitter} />
+            <Socials
+              playerKey={initialData.key}
+              twitter={initialData.twitter}
+              sneakerTokens={initialData.socials.sneakerTokens}
+            />
           </SecondaryContent>
         }
         
@@ -89,6 +94,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params } : { params: any }) {
   const initialData = await getInitialPlayerData(params.key);
+  console.log('init', initialData)
   return {
     props: {
       initialData,

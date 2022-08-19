@@ -8,10 +8,7 @@ interface HighlightsProps {
 export const Highlights: React.FC<HighlightsProps> = ({ playerKey }) => {
   return (
     <>
-      <SectionInnerWrapper>
-        <SectionSubheader>Highlights</SectionSubheader>
-        <HighlightsWidget playerKey={playerKey}/>
-      </SectionInnerWrapper>
+      <HighlightsWidget playerKey={playerKey}/>
     </>
   );
 };

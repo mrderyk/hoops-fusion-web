@@ -8,7 +8,6 @@ const sharedWrapperStyles = () => `
   display: flex;
   list-style-type: none;
   margin: 0;
-  z-index: 100;
 `;
 
 const sharedLinkStyles = () => `
@@ -30,6 +29,7 @@ export const Wrapper = styled.ul`
   ${sharedWrapperStyles()}
   background-color: ${colors.blue};
   padding: .5rem 1rem;
+  z-index: 100;
 `;
 
 export const SubNavWrapper = styled.ul`
