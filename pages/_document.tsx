@@ -12,7 +12,10 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&display=swap" rel="stylesheet"></link>
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6S90RE5C4"></script>
-        <script
+        {
+
+          process.env.NODE_ENV !== 'development' &&
+          <script
             dangerouslySetInnerHTML={{
               __html: `
               window.dataLayer = window.dataLayer || [];
@@ -23,6 +26,7 @@ export default function Document() {
           `,
             }}
           />
+        }
       </Head>
       <body>
         <Main />
