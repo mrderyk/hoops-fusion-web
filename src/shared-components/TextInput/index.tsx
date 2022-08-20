@@ -1,17 +1,22 @@
-import { Input, TextInputWrapper } from "./styled"
+import { forwardRef } from 'react';
+import { Input, TextInputWrapper } from './styled';
 
 export interface TextInputProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
   value?: string;
   inputId?: string;
   size?: string;
   placeholder?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
 }
 
-export const TextInput: React.FC<TextInputProps> = ({ onChange, value, inputId, size, placeholder }) => {
-  return (
-    <TextInputWrapper>
-      <Input placeholder={placeholder} id={inputId} value={value} type="text" onChange={onChange} fontSize={size}/>
-    </TextInputWrapper>
-  )
-};
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ onChange = () => {}, label, value, inputId, size, placeholder, type = 'text' }, ref) => {
+    return (
+      <TextInputWrapper>
+        <Input ref={ref} placeholder={placeholder} id={inputId} value={value} type={type} onChange={onChange} fontSize={size}/>
+      </TextInputWrapper>
+    )
+  }
+);
