@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MainTitle } from 'shared-components/MainTitle';
 import Masonry from '@mui/lab/Masonry';
 import {
@@ -19,6 +19,7 @@ import { DashboardTwitterFeed } from 'page-components/dashboard/DashboardTwitter
 import { DashboardHighlightsFeed } from 'page-components/dashboard/DashboardHighlightsFeed';
 import { DashboardSneakersFeed } from 'page-components/dashboard/DashboardSneakersFeed';
 import { initialWidgetConfigs } from '../../src/initial-widget-config';
+import { SaveConfigConfirmation } from 'page-components/dashboard/SaveConfigConfirmation';
 
 interface DashboardWidgetConfig {
   type: WidgetType;
@@ -35,10 +36,26 @@ export default function Dashboard() {
 
 export const DashboardContent = () => {
   const [widgets, setWidgets] = useState<React.ReactNode[]>([]);
-  const [widgetConfigs, setWidgetConfigs] = useState<DashboardWidgetConfig[]>(initialWidgetConfigs);
+  const [widgetConfigs, setWidgetConfigs] = useState<DashboardWidgetConfig[]>([]);
+  const [showSaveConfirmation, setShowSaveConfirmation] = useState<boolean>(false);
+
+  // Temporary code to set additional widgets to localStorage
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    let localWidgetConfigs: DashboardWidgetConfig[] = [];
+    const stringifiedWidgetConfigs = localStorage.getItem('dashboardWidgets');
+
+    if (stringifiedWidgetConfigs) {
+      localWidgetConfigs = JSON.parse(stringifiedWidgetConfigs);
+    }
+  
+    setWidgetConfigs(localWidgetConfigs.length ? localWidgetConfigs : initialWidgetConfigs);
+  }, []);
 
   useEffect(() => {
     const updatedWidgets: React.ReactNode[] = [];
+
     widgetConfigs.forEach((config: DashboardWidgetConfig) => {
       if (config.type === 'chart') {
         updatedWidgets.push(
@@ -63,21 +80,34 @@ export const DashboardContent = () => {
   }, [widgetConfigs])
 
   const onAddWidget = (widgetType: WidgetType, config: WidgetConfig) => {
-    setWidgetConfigs([
+    const updatedWidgetConfigs = [
       ...widgetConfigs,
       {
         type: widgetType,
         config,
       }
-    ])
+    ];
+
+    setWidgetConfigs(updatedWidgetConfigs);
+
+    // set to local storage
+    localStorage.setItem('dashboardWidgets', JSON.stringify(updatedWidgetConfigs));
+
+    if (!localStorage.getItem('didSeeSaveConfirmation')) {
+      localStorage.setItem('didSeeSaveConfirmation', 'true');
+      setShowSaveConfirmation(true);
+    }
   };
 
   return (
     <Section>
-        <WidgetMaker onAddWidget={onAddWidget} />
-        <Masonry columns={3} spacing={2}>
-          { widgets }
-        </Masonry>
-      </Section>
+      <WidgetMaker onAddWidget={onAddWidget} />
+      <Masonry columns={3} spacing={2}>
+        { widgets }
+      </Masonry>
+      {
+        showSaveConfirmation && <SaveConfigConfirmation onClose={() => setShowSaveConfirmation(false)} />
+      }
+    </Section>
   )
 }

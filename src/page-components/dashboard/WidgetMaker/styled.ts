@@ -30,9 +30,9 @@ export const ExpandButtonWrapper = styled.div`
 export const ModalWrapper = styled.div`
   ${sharedWrapperStyles()}
   color: ${colors.darkGray};
-  position: absolute;
+  position: fixed;
   right: 1rem;
-  top: 1rem;
+  top: 30%;
   width: 520px;
 `;
 

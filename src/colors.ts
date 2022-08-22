@@ -7,6 +7,7 @@ export const white = '#FFFFFF';
 export const lightGray = '#EEEEEE';
 export const midGray = '#AAAAAA';
 export const black = '#000000';
+export const green = '#0A6111';
 
 export const chart: {[key: string]: string} = {
   blue: '#0B84A5',
